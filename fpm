@@ -9,6 +9,11 @@ else
   curl https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/foundation-base -o $HOME/foundation/foundation-base
   curl https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/foundation-extra -o $HOME/foundation/foundation-extra
 fi
+if [ ! -e $store/.install ]; then
+  mkdir  $store/.install
+else
+  echo "nothing" > /dev/null
+fi
 if [ -e ~/.fpkgr ]; then
   source ~/.fpkgr/fpkgr
 else
@@ -26,7 +31,7 @@ function search() {
   echo "Searching for package $request in main."
   echo
   curl -fs https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/pkglist.txt -o $store/pkglist.tmp
-  cat $store/pkglist.tmp | grep $request > $store/output.tmp
+  cat $store/pkglist.tmp | grep $query > $store/output.tmp
   if [ "$(cat $store/output.tmp)" = " " ]; then
     echo "------------------------"
     echo "No results found. Sorry."
@@ -45,7 +50,7 @@ do
     i) request=${OPTARG} && fpkg-install;;
     u) request=${OPTARG} && fpkg-remove;;
     s) query=${OPTARG} && search;;
-    v) curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/release-info -o ~/.fpm/release && cat ~/.fpm/release;;
+    v) curl -fs https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/release-info -o ~/.fpm/release && cat ~/.fpm/release;;
     N) echo "Nuke is not available.";;
     c) echo "Constructor is not available.";;
   esac
