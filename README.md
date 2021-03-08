@@ -25,4 +25,8 @@ fpm/constructor/ - the code and other components for creating a package.
 fpkg-stem - the file that denotes that everything around it is a
 package component.
 
-pkgd - package details. denotes what type, version, and permission needs a script has.
+fpkgd - package details. denotes what type, version, and permission needs a script has.
+
+fpkgdeps - dependency list.
+
+release-info - information about the release.
