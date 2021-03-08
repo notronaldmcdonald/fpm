@@ -2,3 +2,4 @@
 type=FPM
 version=1.0.0
 needs=system
+core=fpm
