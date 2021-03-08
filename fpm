@@ -15,6 +15,7 @@ else
   mkdir ~/.fpkgr
   curl -fs https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/fpkgr/exfpkgr -o ~/.fpkgr/fpkgr
   source ~/.fpkgr/fpkgr
+fi
 if [ ! -e ~/.fpm ]; then
   mkdir ~/.fpm
 else
