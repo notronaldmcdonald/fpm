@@ -9,6 +9,11 @@ else
   curl https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/foundation-base -o $HOME/foundation/foundation-base
   curl https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/foundation-extra -o $HOME/foundation/foundation-extra
 fi
+if [ -e ~/.fpkgr ]; then
+  source ~/.fpkgr/fpkgr
+else
+  mkdir ~/.fpkgr
+  curl -fs https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/fpkgr/exfpkgr -o ~/.fpkgr/fpkgr
   source ~/.fpkgr/fpkgr
 if [ ! -e ~/.fpm ]; then
   mkdir ~/.fpm
