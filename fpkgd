@@ -1,0 +1,4 @@
+# fpkg details
+type=FPM
+version=1.0.0
+needs=system
