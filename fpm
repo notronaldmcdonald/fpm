@@ -8,6 +8,7 @@ else
   mkdir $HOME/foundation
   curl https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/foundation-base -o $HOME/foundation/foundation-base
   curl https://raw.githubusercontent.com/notronaldmcdonald/bash-scripts/master/foundation/foundation-extra -o $HOME/foundation/foundation-extra
+  source $HOME/foundation/foundation-base
 fi
 if [ ! -e $store/.install ]; then
   mkdir  $store/.install
