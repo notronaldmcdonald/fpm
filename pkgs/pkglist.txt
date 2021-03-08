@@ -1,2 +1,3 @@
 fpm_devel
 test
+simple_ssh
