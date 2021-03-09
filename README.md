@@ -18,7 +18,7 @@ Not fully tested, script is typically fresh off the griddle.
 
 fpm/ - the source code directory
 
-fpm/constructor/ - the code and other components for creating a package.
+fpm/constructor/ - the details for creating a package.
 
 **Files**
 
@@ -30,3 +30,12 @@ fpkgd - package details. denotes what type, version, and permission needs a scri
 fpkgdeps - dependency list.
 
 release-info - information about the release.
+
+## Support Table
+What versions are currently supported for fixes, and compatibility packages made available?
+
+---------------------
+| Version | Support |
+---------------------
+| 1.1.x   | Yes     |
+| 1.0.x   | No      |
