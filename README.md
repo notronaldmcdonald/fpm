@@ -20,6 +20,8 @@ fpm/ - the source code directory
 
 fpm/constructor/ - the details for creating a package.
 
+fpm/dpdm
+
 **Files**
 
 fpkg-stem - the file that denotes that everything around it is a
