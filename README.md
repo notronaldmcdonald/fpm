@@ -38,5 +38,5 @@ What versions are currently supported for fixes, and compatibility packages made
 | Version | Support |
 ---------------------
 | 1.1.x   | Yes     |
-|         |         |
+
 | 1.0.x   | No      |
