@@ -1,0 +1,21 @@
+NAME
+
+fpm - The Foundation Package Manager.
+
+SYNOPSIS
+
+fpm [ -h | -v | -i | -u | -N | -c | -s ] <target>
+
+DESCRIPTION
+
+Download and install packages from remote repositories.
+
+OPTIONS
+
+-i - Install
+-u - Uninstall
+-s - Search
+-c - construct
+-N - NUKE
+-v - version
+-h - help

@@ -85,7 +85,7 @@ function construct() {
   echo "${LIGHTBLUE}==> ${RESET}Finished!"
 }
 
-while getopts i:u:s:v:N:c flag
+while getopts i:u:s:v:N:c:h flag
 do
   case "${flag}" in
     i) request=${OPTARG} && fpkg-install;;
@@ -94,5 +94,6 @@ do
     v) curl -fs https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/release-info -o ~/.fpm/release && cat ~/.fpm/release;;
     N) nuke;;
     c) construct;;
+    h) curl -fs https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/help -o ~/.fpm/help && cat ~/.fpm/help;;
   esac
 done
