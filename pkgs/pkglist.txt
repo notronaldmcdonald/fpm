@@ -1,2 +1,4 @@
-fpm_devel
+fpm_base
 test
+simple_ssh
+archsync
