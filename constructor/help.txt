@@ -3,5 +3,4 @@ constructor - the Foundation Package Builder
 Usage: fpm -c
 
 Execute in a directory containing necessary files.
-If done properly, will automatically produce a stem file
-to store the checksum for integrity checks.
+If done properly, will automatically package the files.
