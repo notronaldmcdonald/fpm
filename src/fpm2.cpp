@@ -1,3 +1,7 @@
+// Foundation Package Manager
+// A package manager written in C++/Python.
+// Developed by Brett. (https://github.com/notronaldmcdonald)
+
 // header
 #include <iostream>
 #include <string.h>
@@ -9,14 +13,12 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v1devel";
+  const string build = "v0.1.0a";
   // variables here
   string input;
-  string installdir = "/home/bean/.fpm/install";
-  string packagedir = "/home/bean/.fpm/pkgs";
   // system commands
-  const string installfpmcommand = "./.fpm_spine_install_fpm.py";
-  const string fpminstallp2 = "cp /home/bean/.fpm/install/fpm2_core /home/bean/.fpm/pkgs/fpm"
+  const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
+  const string install = "python /usr/local/bin/.spine_install.py";
   // process starts here
   // tell the user the syntax is wrong
   if ( argc != 3 ) {
@@ -56,26 +58,17 @@ int main( int argc, char *argv[] ) {
       cout << "\nfpm: install: user accepted install.";
       cout << "\nfpm: install: installing package 'fpm' from core/fpm...";
       system(installfpmcommand.c_str());
-      cout << "\nfpm: install: returning from spine"
-      cout << "\nfpm: install: placing files in install directories..."
-      cout << "\n\nfpm: operating system check"
-      #ifdef __linux__
-        // linux code
-        cout << "\nfpm: running on linux"
-        cout << "\nfpm: return to install"
-        cout << "\nfpm: install"
-        char text[255];
-        FILE *name;
-        name = popen("whoami", "r");
-        fgets(text, sizeof(text), name);
-        cout << "\nusername: " << text;
-        cout << "\nfpm: install: substitute bean";
-        installdir.replace(7,4,text);
-        packagedir.replace(7,4,text);
-      #elif _WIN32
-        // win32 code
+      cout << "\nfpm: install: returning from spine";
+      cout << "\nfpm: finishing install of self";
+      cout << "\nfpm: package 'fpm' installed. add ~/.fpm/pkgs to your PATH if you haven't done so.";
     }
+  // version check
+  if ( (argc == 3) && (string(argv[1]) == "version") && (string(argv[2]) == "fpm") ) {
+    cout << "\nfpm: version";
+    cout << "\n\nfpm: the foundation package manager";
+    cout << "\nrelease: " << build;
   }
   cout << "\n\nfpm: done!";
+  }
 }
 // code ends here

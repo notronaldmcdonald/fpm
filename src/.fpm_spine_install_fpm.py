@@ -51,6 +51,12 @@ elif platform == "win32":
     pkgtar.extractall("C:\\Users\\%s\\.fpm\\install\\" % user)
     pkgtar.close()
 print("fpm_spine: unpacked package.")
+print("fpm_spine: moving to package folder...")
+if platform == "darwin" or platform == "linux" or platform == "linux2":
+    subprocess.run(["cp", "/home/%s/.fpm/install/fpm2_core", "/home/%s/.fpm/pkgs/fpm" % user])
+    subprocess.run(["chmod", "+x", "/home/%s/.fpm/pkgs/fpm" % user])
+elif platform == "win32":
+    subprocess.run(["copy", "C:\\Users\\%s\\.fpm\\install\\fpm2_core", "C:\\Users\\%s\\.fpm\\pkgs\\fpm"])
 print("fpm_spine: all good, passing back to core.")
 
 # end script
