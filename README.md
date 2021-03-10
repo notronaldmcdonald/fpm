@@ -20,7 +20,7 @@ fpm/ - the source code directory
 
 fpm/constructor/ - the details for creating a package.
 
-fpm/dpdm
+fpm/src - source code directory for C++ code.
 
 **Files**
 
@@ -41,3 +41,4 @@ What versions are currently supported for fixes, and compatibility packages made
 |---------|---------|
 | 1.1.x   | Yes     |
 | 1.0.x   | No      |
+| 0.1.x   | dev     |
