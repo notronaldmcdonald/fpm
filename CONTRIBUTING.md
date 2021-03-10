@@ -17,3 +17,7 @@ If you're a stranger who just came across this project and wants to submit somet
 * All kinds of packages are allowed.
 
 * Packages should include an *fpkgd* file or a *.stem* file.
+
+**General**
+
+* Make your pull requests against the 'live' branch.
