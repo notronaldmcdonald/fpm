@@ -33,7 +33,7 @@ int main( int argc, char *argv[] ) {
     cout << "\n\ninstall: install a program";
     cout << "\nuninstall: uninstall a program";
     cout << "\nsearch: search repositories for a program";
-    cout << "\nversion: display version data for a program.";
+    cout << "\nversion: display fpm version + subscript versions.";
   }
   // tell the user where help files are
   else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
@@ -63,12 +63,16 @@ int main( int argc, char *argv[] ) {
       cout << "\nfpm: package 'fpm' installed. add ~/.fpm/pkgs to your PATH if you haven't done so.";
     }
   // version check
-  if ( (argc == 3) && (string(argv[1]) == "version") && (string(argv[2]) == "fpm") ) {
+  }
+  if ( (argc == 3) && (string(argv[1]) == "version") ) {
     cout << "\nfpm: version";
     cout << "\n\nfpm: the foundation package manager";
-    cout << "\nrelease: " << build;
-  }
-  cout << "\n\nfpm: done!";
+    cout << "\nwritten in C++, with the installation scripts written in python.";
+    cout << "\nbuild: " << build;
+    cout << "\n\nfpm_spine: the backbone of fpm";
+    cout << "\nwritten in python.";
+    cout << "\nbuild: " << build;
   }
 }
+
 // code ends here
