@@ -3,6 +3,7 @@
 #include <string.h>
 #include <cmath>
 #include <fstream>
+#include <cstdio>
 
 using namespace std;
 // code starts here
@@ -11,7 +12,11 @@ int main( int argc, char *argv[] ) {
   const string build = "v1devel";
   // variables here
   string input;
+  string installdir = "/home/bean/.fpm/install";
+  string packagedir = "/home/bean/.fpm/pkgs";
+  // system commands
   const string installfpmcommand = "./.fpm_spine_install_fpm.py";
+  const string fpminstallp2 = "cp /home/bean/.fpm/install/fpm2_core /home/bean/.fpm/pkgs/fpm"
   // process starts here
   // tell the user the syntax is wrong
   if ( argc != 3 ) {
@@ -51,6 +56,24 @@ int main( int argc, char *argv[] ) {
       cout << "\nfpm: install: user accepted install.";
       cout << "\nfpm: install: installing package 'fpm' from core/fpm...";
       system(installfpmcommand.c_str());
+      cout << "\nfpm: install: returning from spine"
+      cout << "\nfpm: install: placing files in install directories..."
+      cout << "\n\nfpm: operating system check"
+      #ifdef __linux__
+        // linux code
+        cout << "\nfpm: running on linux"
+        cout << "\nfpm: return to install"
+        cout << "\nfpm: install"
+        char text[255];
+        FILE *name;
+        name = popen("whoami", "r");
+        fgets(text, sizeof(text), name);
+        cout << "\nusername: " << text;
+        cout << "\nfpm: install: substitute bean";
+        installdir.replace(7,4,text);
+        packagedir.replace(7,4,text);
+      #elif _WIN32
+        // win32 code
     }
   }
   cout << "\n\nfpm: done!";

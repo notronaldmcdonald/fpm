@@ -51,9 +51,6 @@ elif platform == "win32":
     pkgtar.extractall("C:\\Users\\%s\\.fpm\\install\\" % user)
     pkgtar.close()
 print("fpm_spine: unpacked package.")
-print("fpm_spine: installing...")
-print("fpm_spine: moving to install directories...")
-if platform == "linux" or platform == "linux2" or platform == "darwin":
-    print("fpm_spine: linux install")
-    pathlib.Path("/home/%s/.fpm/packages" % user).mkdir(parents=True, exist_ok=True)
-    subprocess.run("cp", "/home/%s/.fpm/install/fpm /home/%s/.fpm/packages" % user)
+print("fpm_spine: all good, passing back to core.")
+
+# end script
