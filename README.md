@@ -39,6 +39,7 @@ What versions are currently supported for fixes, and compatibility packages made
 ---------------------
 | Version | Support |
 |---------|---------|
+| 1.9.9   | dev     |
 | 1.1.x   | Yes     |
 | 1.0.x   | No      |
-| 0.1.x   | dev     |
+| 0.1.x   | No      |
