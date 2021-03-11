@@ -28,6 +28,49 @@ else
   echo "nothing" > /dev/null
 fi
 
+function checkinstall() {
+  installmode="old"
+  if [ "installmode" = "old" ]; then
+    fpkg-install
+  else
+    installv2
+  fi
+}
+
+function installv2() {
+  echo "Searching for package $request in main."
+  echo ""
+  curl -fs https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o $store/index.tmp
+  cat $store/index.tmp | grep -w $request > $store/output.tmp
+  if [ "$(cat $store/output.tmp)" = ""]; then
+    echo "-------------------------"
+    echo "Package not found. Sorry."
+    echo "-------------------------"
+  else
+    echo "-----------------------"
+    echo "Found $request in main."
+    echo "-----------------------"
+    read -p "Install? [Y/n] " acceptinstall
+    if [ "$acceptinstall" != "n" ]; then
+      echo "Starting download..."
+      curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/$request.tar.gz -o ~/.fpm/install/$request.tar.gz
+      tar -xf ~/.fpm/install/$request.tar.gz
+      source ~/.fpm/install/fpkgd
+      if [ "$needs" = "system" ]; then
+        echo "need privileges"
+        sudo cp ~/.fpm/install/$core /usr/local/bin/$core
+        sudo chmod +x /usr/local/bin/$core
+      else
+        cp ~/.fpm/install/$core ~/.fpm/pkgs/$core
+      fi
+    else
+      echo "abort."
+      exit
+    fi
+    echo "Done."
+  fi
+}
+
 function search() {
   echo "Searching for package $query in main."
   echo
@@ -88,7 +131,7 @@ function construct() {
 while getopts i:u:s:v:N:c:h flag
 do
   case "${flag}" in
-    i) request=${OPTARG} && fpkg-install;;
+    i) request=${OPTARG} && checkinstall;;
     u) request=${OPTARG} && fpkg-remove;;
     s) query=${OPTARG} && search;;
     v) curl -fs https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/release-info -o ~/.fpm/release && cat ~/.fpm/release;;
