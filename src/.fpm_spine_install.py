@@ -7,13 +7,18 @@
 import subprocess
 import tarfile
 import pathlib
+from pathlib import Path
 import os
 import sys
+import string
+from string import Template
 from sys import platform
 
 # some variables
 
-internal_index = {'user': os.getlogin(), 'core': "https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs"}
+user = os.getlogin()
+core = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs"
+home = str(Path.home())
 
 # USER - define your package sources by adding an additional dictionary entry. you can simply add additional 'curl' lines to the download portion of the script.
 # Replace the selection at the end of the new curl line with your source name. (i.e. '[...] % core' > '[...] % userrepo')
@@ -35,22 +40,23 @@ if platform != "win32":
             sys.exit()
         else:
             # the aforementioned curl line is below
-            subprocess.run(["curl", "{internal_index['core']}/%s.tar.gz", "-o", "/home/{internal_index['user']}/.fpm/install/%s.tar.gz" % target])
+            subprocess.run(["curl", f"{core}/%s.tar.gz", "-o", f"{home}/.fpm/install/%s.tar.gz" % target])
             # the aforementioned curl line is above
             print("fpm_spine: unpacking")
-            pkgtar = tarfile.open("/home/{internal_index['user']}/.fpm/install/%s.tar.gz" % target)
-            pkgtar.extractall("/home/{internal_index['user']}/.fpm/install/")
+            pkgtar = tarfile.open(f"{home}/.fpm/install/%s.tar.gz" % target)
+            pkgtar.extractall(f"{home}/.fpm/install/")
             pkgtar.close()
-            exec(open("/home/{internal_index['user']}/.fpm/install/fpkgd").read())
+            exec(open("{home}/.fpm/install/fpkgd").read())
             print("fpm_spine: determine the binary")
-            subprocess.run(["cp", "/home/{internal_index['user']}/.fpm/install/%s", "/home/{internal_index['user']}/.fpm/pkgs/%s" % base])
+            subprocess.run(["cp", f"{home}/.fpm/install/%s", f"{home}/.fpm/pkgs/%s" % base])
             print("fpm_spine: binary should be moved")
     except:
         print("fpm_spine: unknown exception occurred.")
     finally:
         print("fpm_spine: done that")
     print("fpm_spine: cleaning up now")
-    subprocess.run(["rm", "-f", "/home/{internal_index}['user']/.fpm/install/*"])
+    subprocess.run(["rm", "-f", f"{home}/.fpm/install/*"])
+    subprocess.run(["rm", "-f", ".target.txt"])
     print("fpm_spine: finished cleanup")
 else:
     print("fpm_spine: windows")
@@ -62,19 +68,20 @@ else:
             sys.exit()
         else:
             # same as the *nix section
-            subprocess.run(["curl", "{internal_index['core']}/%s.tar.gz", "-o", "C:\\Users\\{internal_index['user']}\\.fpm\\install\\%s.tar.gz" % target])
+            subprocess.run(["curl", f"{core}/%s.tar.gz", "-o", f"{home}\\.fpm\\install\\%s.tar.gz" % target])
             print("fpm_spine: unpacking")
-            pkgtar = tarfile.open("C:\\Users\\{internal_index['user']}\\.fpm\\install\\%s.tar.gz" % target)
-            pkgtar.extractall("C:\\Users\\{internal_index['user']}\\.fpm\\install")
+            pkgtar = tarfile.open(f"{home}\\.fpm\\install\\%s.tar.gz" % target)
+            pkgtar.extractall(f"{home}\\.fpm\\install")
             pkgtar.close()
-            exec(open("C:\\Users\\{internal_index['user']}\\.fpm\\install\\fpkgd").read())
+            exec(open(f"{home}\\.fpm\\install\\fpkgd").read())
             print("fpm_spine: determine the binary")
-            subprocess.run(["copy", "C:\\Users\\{internal_index['user']}\\.fpm\\install\\%s", "C:\\Users\\{internal_index['user']}\\.fpm\\pkgs\\%s" % base])
+            subprocess.run(["copy", f"{home}\\.fpm\\install\\%s", f"{home}\\.fpm\\pkgs\\%s" % base])
             print("fpm_spine: binary should be moved")
     except:
         print("fpm_spine: unknown exception occurred.")
     finally:
         print("fpm_spine: done that")
     print("fpm_spine: cleaning up now")
-    subprocess.run(["del", "/f", "C:\\Users\\{internal_index['user']}\\.fpm\\install\\*"])
+    subprocess.run(["del", "/f", f"{home}\\.fpm\\install\\*"])
+    subprocess.run(["del", "/f", ".target.txt"])
 print("fpm_spine: exit python")
