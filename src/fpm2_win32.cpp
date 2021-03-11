@@ -18,11 +18,10 @@ int main( int argc, char *argv[] ) {
   string input;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
-  const string install = "python /usr/local/bin/.fpm_spine_install.py";
-  const string uninstall = "python /usr/local/bin/.fpm_spine_uninstall.py";
-  const string search = "python /usr/local/bin/.fpm_glasses.rb"
-  // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
-
+  const string install = "python C:\\Program Files\\foundationpm\\.fpm_spine_install.py";
+  const string uninstall = "python C:\\Program Files\\foundationpm\\.fpm_spine_uninstall.py"
+  const string search = "python C:\\Program Files\\foundationpm\\.fpm_glasses.rb"
+  const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
   // process starts here
   // tell the user the syntax is wrong
   if ( argc != 3 ) {
