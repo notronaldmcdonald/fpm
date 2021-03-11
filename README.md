@@ -36,9 +36,11 @@ release-info - information about the release.
 ## Support Table
 What versions are currently supported for fixes, and compatibility packages made available?
 
----------------------
-| Version | Support |
-|---------|---------|
-| 1.1.x   | Yes     |
-| 1.0.x   | No      |
-| 0.1.x   | dev     |
+------------------------------------
+| Version | Support | Latest Build |
+|---------|---------|--------------|
+| 1.9.9   | dev     | 03/11/2021   |
+| 1.2.x   | Yes     | 03/11/2021   |
+| 1.1.x   | No      | 03/08/2021   |
+| 1.0.x   | No      | 03/07/2021   |
+| 0.1.x   | No      | 03/10/2021   |
