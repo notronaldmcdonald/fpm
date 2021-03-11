@@ -1,4 +1,4 @@
-// Foundation Package Manager
+s = File.size(".output.tmp")// Foundation Package Manager
 // A package manager written in C++/Python.
 // Developed by Brett. (https://github.com/notronaldmcdonald)
 
@@ -18,9 +18,9 @@ int main( int argc, char *argv[] ) {
   string input;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
-  const string install = "python /usr/local/bin/.fpm_spine_install.py";
-  const string uninstall = "python /usr/local/bin/.fpm_spine_uninstall.py";
-  const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
+  const string install = "python 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'";
+  const string uninstall = "python 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_uninstall.py'";
+  const string search = "ruby 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'";
   // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
 
   // process starts here
@@ -36,7 +36,7 @@ int main( int argc, char *argv[] ) {
     cout << "fpm: help";
     cout << "\n\ninstall: install a program";
     cout << "\nuninstall: uninstall a program";
-    cout << "\nsearch: search repositories for a program";
+    //cout << "\nsearch: search repositories for a program"; - not available for windows
     cout << "\nversion: display fpm version + subscript versions.";
   }
   // tell the user where help files are
@@ -119,17 +119,17 @@ int main( int argc, char *argv[] ) {
     choicefile << "choice=" << choice;
     choicefile.close();
     cout << "\nfpm: run spine script";
-    system(uninstall.c_str());
+    system(uninstall.c_str())
   }
   // search
-  if ( (argc == 3) && (string(argv[1]) == "search") ) {
-    cout << "\nfpm: search";
-    std::string query;
-    query.append("'");
-    query.append(string(argv[2]));
-    query.append("'");
-    system(search.c_str());
-  }
+  //if ( (argc == 3) && (string(argv[1]) == "search") ) {
+    //cout << "\nfpm: search";
+    //std::string query;
+    //query.append("'");
+    //query.append(string(argv[2]));
+    //query.append("'");
+    //system(search.c_str());
+  //}
 }
 
 // code ends here
