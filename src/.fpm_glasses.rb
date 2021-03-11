@@ -19,7 +19,7 @@ query = gets
 query = query.chomp
 puts "Okay! Looking up #{query}..."
 # this is the search line
-system("curl -s #{test} -o .index.tmp")
+system("curl -s #{core} -o .index.tmp")
 # the search line is above
 system("grep -w #{query} .index.tmp > .output.tmp")
 s = File.size(".output.tmp")
