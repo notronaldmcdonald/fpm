@@ -73,6 +73,16 @@ int main( int argc, char *argv[] ) {
     cout << "\nwritten in python.";
     cout << "\nbuild: " << build;
   }
+  if ( (argc == 3) && (string(argv[1]) == "install") ) {
+    cout << "\nfpm: install";
+    cout << "\n\nfpm: running search function";
+    cout << "\nfpm: search: passing data to spine...";
+    ofstream myfile;
+    myfile.open (".target.txt");
+    myfile << "target= " << (string(argv[2]));
+    myfile.close();
+    cout << "fpm: search: target defined. switch to spine...";
+  }
 }
 
 // code ends here
