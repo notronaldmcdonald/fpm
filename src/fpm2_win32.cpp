@@ -1,4 +1,4 @@
-s = File.size(".output.tmp")// Foundation Package Manager
+// Foundation Package Manager
 // A package manager written in C++/Python.
 // Developed by Brett. (https://github.com/notronaldmcdonald)
 
@@ -119,7 +119,7 @@ int main( int argc, char *argv[] ) {
     choicefile << "choice=" << choice;
     choicefile.close();
     cout << "\nfpm: run spine script";
-    system(uninstall.c_str())
+    system(uninstall.c_str());
   }
   // search
   //if ( (argc == 3) && (string(argv[1]) == "search") ) {
