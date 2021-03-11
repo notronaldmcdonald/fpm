@@ -13,14 +13,14 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v0.1.0a";
+  const string build = "v1.9.9";
   // variables here
   string input;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
   const string install = "python /usr/local/bin/.fpm_spine_install.py";
   const string uninstall = "python /usr/local/bin/.fpm_spine_uninstall.py";
-  const string search = "python /usr/local/bin/.fpm_glasses.rb"
+  const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
   // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
 
   // process starts here
@@ -81,8 +81,11 @@ int main( int argc, char *argv[] ) {
     cout << "\nfpm: install";
     cout << "\n\nfpm: running search function";
     cout << "\nfpm: search: write target to tempfile";
-    target = "'" + string(argv[2]) + "'";
-    ofstream target;
+    std::string target;
+    target.append("'");
+    target.append(string(argv[2]));
+    target.append("'");
+    ofstream targetfile;
     targetfile.open (".target.txt");
     targetfile << "target=" << target;
     targetfile.close();
@@ -96,29 +99,36 @@ int main( int argc, char *argv[] ) {
   if ( (argc == 3) && (string(argv[1]) == "uninstall") ) {
     cout << "\nfpm: uninstall";
     cout << "\nasking for input";
-    cout << "fpm: run interactively? [Y/n] ";
+    cout << "\nfpm: run interactively? [Y/n] ";
     cin >> input;
-    cout << "fpm: " << input;
-    target = "'" + string(argv[2]) + "'";
-    ofstream target;
+    cout << "\nfpm: " << input;
+    std::string target;
+    target.append("'");
+    target.append(string(argv[2]));
+    target.append("'");
+    ofstream targetfile;
     targetfile.open (".target.txt");
     targetfile << "target=" << target;
     targetfile.close();
-    choice = "'" + input + "'"
-    ofstream input;
-    choice.open (".choice.txt");
-    choice << "choice=" << choice;
-    choice.close();
+    std::string choice;
+    choice.append("'");
+    choice.append(input);
+    choice.append("'");
+    ofstream choicefile;
+    choicefile.open (".choice.txt");
+    choicefile << "choice=" << choice;
+    choicefile.close();
     cout << "\nfpm: run spine script";
+    system(uninstall.c_str());
   }
   // search
   if ( (argc == 3) && (string(argv[1]) == "search") ) {
     cout << "\nfpm: search";
-    query = "'" + string(argv[2]) + "'";
-    ofstream query;
-    queryfile.open (".query.txt");
-    queryfile << "query" << query;
-    queryfile.close();
+    std::string query;
+    query.append("'");
+    query.append(string(argv[2]));
+    query.append("'");
+    system(search.c_str());
   }
 }
 

@@ -21,10 +21,13 @@ echo "${YELLOW}install: get with curl"
 echo "${RESET}"
 mkdir ~/.fpm/
 mkdir ~/.fpm/.install2/
-curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/fpm2.cpp -o $HOME/.fpm/.install2/fpm2.cpp
-curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/.fpm_spine_install_fpm.py -o $HOME/.fpm/.install2/.fpm_spine_install_fpm.py
+#curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/fpm2.cpp -o $HOME/.fpm/.install2/fpm2.cpp - get built version instead
+#curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/.fpm_spine_install_fpm.py -o $HOME/.fpm/.install2/.fpm_spine_install_fpm.py
 curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/release-info -o $HOME/.fpm/release-info
-g++ $HOME/.fpm/.install2/fpm2.cpp -o $HOME/.fpm/.install2/a.out
+curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/.fpm_glasses.rb -o $HOME/.fpm/.fpm_glasses.rb
+curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/.fpm_spine_uninstall.py -o $HOME/.fpm/.fpm_spine_uninstall.py
+curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/.fpm_spine_install.py -o $HOME/.fpm/.fpm_spine_install.py
+#g++ $HOME/.fpm/.install2/fpm2.cpp -o $HOME/.fpm/.install2/a.out
 mv $HOME/.fpm/.install2/a.out $HOME/.fpm/.install2/fpm
 echo "${LIGHTBLUE}install: request privilege escalation to access /usr/local/bin${RESET}"
 sudo mv $HOME/.fpm/.install2/fpm /usr/local/bin/fpm
