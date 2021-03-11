@@ -20,7 +20,7 @@ fpm/ - the source code directory
 
 fpm/constructor/ - the details for creating a package.
 
-fpm/src - source code directory for C++ code.
+fpm/src - source code directory for FPM2.
 
 **Files**
 
