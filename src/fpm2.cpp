@@ -42,29 +42,28 @@ int main( int argc, char *argv[] ) {
     cout << "\n\nhelp documentation for every package installed (that has help documentation) is located in a ~/.fpm/help/<program>_help.txt file";
     cout << "\n(on windows, that's in your user folder.)";
   }
-  // install fpm
-  if ( (argc == 3) && (string(argv[1]) == "install") && (string(argv[2]) == "fpm") ) {
-    cout << "fpm: install";
-    cout << "\n\n------------------------------------------";
-    cout << "\n found package 'fpm' at core/pkgs/fpm.tar";
-    cout << "\n\ninstall package 'fpm' from core/fpm? [Y/n]\n";
-    cout << "\n------------------------------------------\n";
-    cout << "Enter your command: ";
-    cin >> input;
-    cout << "\nfpm: install: user input: " << input;
-    if ( (string(input) == "n") ) {
-      cout << "\nfpm: install: user refused install.";
-    }
-    else {
-      cout << "\nfpm: install: user accepted install.";
-      cout << "\nfpm: install: installing package 'fpm' from core/fpm...";
-      system(installfpmcommand.c_str());
-      cout << "\nfpm: install: returning from spine";
-      cout << "\nfpm: finishing install of self";
-      cout << "\nfpm: package 'fpm' installed. add ~/.fpm/pkgs to your PATH if you haven't done so.";
-    }
+  // install fpm - disabled by default
+  //if ( (argc == 3) && (string(argv[1]) == "install") && (string(argv[2]) == "fpm") ) {
+    //cout << "fpm: install";
+    //cout << "\n\n------------------------------------------";
+    //cout << "\n found package 'fpm' at core/pkgs/fpm.tar";
+    //cout << "\n\ninstall package 'fpm' from core/fpm? [Y/n]\n";
+    //cout << "\n------------------------------------------\n";
+    //cout << "Enter your command: ";
+    //cin >> input;
+    //cout << "\nfpm: install: user input: " << input;
+    //if ( (string(input) == "n") ) {
+      //cout << "\nfpm: install: user refused install.";
+    //}
+    //else {
+      //cout << "\nfpm: install: user accepted install.";
+      //cout << "\nfpm: install: installing package 'fpm' from core/fpm...";
+      //system(installfpmcommand.c_str());
+      //cout << "\nfpm: install: returning from spine";
+      //cout << "\nfpm: finishing install of self";
+      //cout << "\nfpm: package 'fpm' installed. add ~/.fpm/pkgs to your PATH if you haven't done so.";
+    //}
   // version check
-  }
   if ( (argc == 3) && (string(argv[1]) == "version") ) {
     cout << "\nfpm: version";
     cout << "\n\nfpm: the foundation package manager";
@@ -88,6 +87,24 @@ int main( int argc, char *argv[] ) {
     cout << "\nfpm: search: python";
     cout << "\nfpm: install: done";
     cout << "\nfpm: exit";
+  }
+  if ( (argc == 3) && (string(argv[1]) == "uninstall") ) {
+    cout << "\nfpm: uninstall";
+    cout << "\nasking for input";
+    cout << "fpm: run interactively? [Y/n] ";
+    cin >> input;
+    cout << "fpm: " << input;
+    target = "'" + string(argv[2]) + "'";
+    ofstream target;
+    targetfile.open (".target.txt");
+    targetfile << "target=" << target;
+    targetfile.close();
+    choice = "'" + input + "'"
+    ofstream input;
+    choice.open (".choice.txt");
+    choice << "choice=" << choice;
+    choice.close();
+    cout << "\nfpm: run spine script";
   }
 }
 
