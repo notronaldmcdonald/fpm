@@ -18,7 +18,8 @@ int main( int argc, char *argv[] ) {
   string input;
   // system commands
   const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
-  const string install = "python /usr/local/bin/.spine_install.py";
+  const string install = "python /usr/local/bin/.fpm_spine_install.py";
+  const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
   // process starts here
   // tell the user the syntax is wrong
   if ( argc != 3 ) {
@@ -76,12 +77,17 @@ int main( int argc, char *argv[] ) {
   if ( (argc == 3) && (string(argv[1]) == "install") ) {
     cout << "\nfpm: install";
     cout << "\n\nfpm: running search function";
-    cout << "\nfpm: search: passing data to spine...";
-    ofstream myfile;
-    myfile.open (".target.txt");
-    myfile << "target= " << (string(argv[2]));
-    myfile.close();
-    cout << "fpm: search: target defined. switch to spine...";
+    cout << "\nfpm: search: write target to tempfile";
+    target = "'" + string(argv[2]) + "'";
+    ofstream target;
+    targetfile.open (".target.txt");
+    targetfile << "target=" << target;
+    targetfile.close();
+    cout << "\nfpm: search: switch to python";
+    system(install.c_str());
+    cout << "\nfpm: search: python";
+    cout << "\nfpm: install: done";
+    cout << "\nfpm: exit";
   }
 }
 
