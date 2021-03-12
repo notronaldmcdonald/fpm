@@ -4,9 +4,9 @@
 
 // MIT License
 
-//Copyright (c) 2021 Brett I. <https://github.com/notronaldmcdonald>
+// Copyright (c) 2021 Brett I. <https://github.com/notronaldmcdonald>
 
-/*Permission is hereby granted, free of charge, to any person obtaining a copy
+/* Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -22,7 +22,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.*/
+SOFTWARE. */
 
 // header
 #include <iostream>
@@ -35,14 +35,17 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v1.9.14";
+  const string build = "v1.9.15";
   // variables here
   string input;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
   const string install = "ruby /usr/local/bin/.fpm_spine_install.rb";
-  const string uninstall = "python /usr/local/bin/.fpm_spine_uninstall.py";
+  const string uninstall = "ruby /usr/local/bin/.fpm_spine_uninstall.rb";
   const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
+  const string getchangelog = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md -o /tmp/CHANGELOG.md";
+  const string readchangelog = "cat /tmp/CHANGELOG.md";
+  const string cleanchangelog = "rm -f /tmp/CHANGELOG.md";
   // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
 
   // process starts here
@@ -60,6 +63,7 @@ int main( int argc, char *argv[] ) {
     cout << "\nuninstall: uninstall a program";
     cout << "\nsearch: search repositories for a program";
     cout << "\nversion: display fpm version + subscript versions.";
+    cout << "\nchangelog: get the CHANGELOG.md file from upstream/core.";
   }
   // tell the user where help files are
   else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
@@ -104,12 +108,10 @@ int main( int argc, char *argv[] ) {
     cout << "\n\nfpm: running search function";
     cout << "\nfpm: search: write target to tempfile";
     std::string target;
-    target.append("\"");
     target.append(string(argv[2]));
-    target.append("\"");
     ofstream targetfile;
     targetfile.open ("/tmp/.target");
-    targetfile << "target = " << target;
+    targetfile << target;
     targetfile.close();
     cout << "\nfpm: search: switch to ruby";
     system(install.c_str());
@@ -120,37 +122,31 @@ int main( int argc, char *argv[] ) {
   // uninstall package
   if ( (argc == 3) && (string(argv[1]) == "uninstall") ) {
     cout << "\nfpm: uninstall";
-    cout << "\nasking for input";
-    cout << "\nfpm: run interactively? [Y/n] ";
-    cin >> input;
-    cout << "\nfpm: " << input;
     std::string target;
-    target.append("'");
     target.append(string(argv[2]));
-    target.append("'");
     ofstream targetfile;
-    targetfile.open (".target.txt");
-    targetfile << "target=" << target;
+    targetfile.open ("/tmp/.target.txt");
+    targetfile << target;
     targetfile.close();
-    std::string choice;
-    choice.append("'");
-    choice.append(input);
-    choice.append("'");
-    ofstream choicefile;
-    choicefile.open (".choice.txt");
-    choicefile << "choice=" << choice;
-    choicefile.close();
     cout << "\nfpm: run spine script";
     system(uninstall.c_str());
   }
   // search
   if ( (argc == 3) && (string(argv[1]) == "search") ) {
     cout << "\nfpm: search";
-    std::string query;
-    query.append("'");
-    query.append(string(argv[2]));
-    query.append("'");
     system(search.c_str());
+  }
+  if ( (argc == 3) && (string(argv[1]) == "changelog") ) {
+    cout << "\nfpm: changelog";
+    cout << "\nfpm: changelog: download";
+    system(getchangelog.c_str());
+    cout << "\nfpm: changelog";
+    cout << "\nfpm: changelog: read";
+    system(readchangelog.c_str());
+    cout << "\nfpm: changelog";
+    cout << "\nfpm: cleaning up";
+    system(cleanchangelog.c_str());
+    cout << "\nfpm: exit";
   }
 }
 
