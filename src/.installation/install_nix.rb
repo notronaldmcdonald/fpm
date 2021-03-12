@@ -65,6 +65,7 @@ else
       system("curl #{live}/src/.fpm_spine_install.py -o /usr/local/bin/.fpm_spine_install.py")
       system("curl #{live}/src//.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
       system("cp fpm /usr/local/bin/fpm")
+    end
   end
 end
 puts "Done."
