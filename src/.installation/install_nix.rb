@@ -32,14 +32,14 @@ if(File.exist?("/usr/local/bin/fpm"))
       system("curl #{core}/.bin/fpm2_nix -o fpm")
       system("curl #{core}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
       system("curl #{core}/src/.fpm_spine_install.py -o /usr/local/bin/.fpm_spine_install.py")
-      system("curl #{core}/src//.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
+      system("curl #{core}/src/.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
       system("cp fpm /usr/local/bin/fpm")
     else
       puts "Downloading..."
       system("curl #{live}/.bin/fpm2_nix -o fpm")
       system("curl #{live}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
       system("curl #{live}/src/.fpm_spine_install.py -o /usr/local/bin/.fpm_spine_install.py")
-      system("curl #{live}/src//.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
+      system("curl #{live}/src/.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
       system("cp fpm /usr/local/bin/fpm")
     end
   end
@@ -56,14 +56,14 @@ else
       system("curl #{core}}/.bin/fpm2_nix -o fpm")
       system("curl #{core}}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
       system("curl #{core}}/src/.fpm_spine_install.py -o /usr/local/bin/.fpm_spine_install.py")
-      system("curl #{core}}/src//.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
+      system("curl #{core}}/src/.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
       system("cp fpm /usr/local/bin/fpm")
     else
       puts "Downloading..."
       system("curl #{live}/.bin/fpm2_nix -o fpm")
       system("curl #{live}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
       system("curl #{live}/src/.fpm_spine_install.py -o /usr/local/bin/.fpm_spine_install.py")
-      system("curl #{live}/src//.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
+      system("curl #{live}/src/.fpm_spine_uninstall.py -o /usr/local/bin/.fpm_spine_install.py")
       system("cp fpm /usr/local/bin/fpm")
     end
   end
