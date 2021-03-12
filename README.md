@@ -24,17 +24,6 @@ fpm/src - source code directory for FPM2.
 
 fpm/.bin - precompiled binary files
 
-**Files**
-
-fpkg-stem - the file that denotes that everything around it is a
-package component.
-
-fpkgd - package details. denotes what type, version, and permission needs a script has.
-
-fpkgdeps - dependency list.
-
-release-info - information about the release.
-
 ## Support Table
 What versions are currently supported for fixes, and compatibility packages made available?
 
