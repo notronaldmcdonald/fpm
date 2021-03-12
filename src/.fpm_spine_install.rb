@@ -13,7 +13,7 @@ live = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/live/pkgs"
 
 # begin script
 
-eval(File.read(".target.txt"), binding)
+eval(File.read("/tmp/.target.txt"), binding)
 puts "Welcome!"
 puts "You requested: #{target}."
 puts "Select a repository to download from:"

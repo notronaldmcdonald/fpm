@@ -26,7 +26,7 @@ home = str(Path.home())
 # begin script
 
 print("fpm: starting python script...")
-exec(open('.target.txt').read())
+exec(open('/tmp/.target.txt').read())
 print("fpm_spine: reading")
 print("fpm_spine: operating system check")
 if platform != "win32":
