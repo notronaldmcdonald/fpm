@@ -10,11 +10,13 @@ home = Dir.home
 # USER - if you wish to add a repository, use this format.
 core = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs"
 live = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/live/pkgs"
-target = "nnn"
+mode = "r"
+# target = "nnn" - this was a developer testing piece and it can be ignored.
 
 # begin script
 
-eval(File.read("/tmp/.target"), binding)
+targetfile = File.open("/tmp/.target", mode)
+target = targetfile.read
 puts "Welcome!"
 puts "You requested: #{target}."
 puts "Select a repository to download from:"
@@ -50,6 +52,7 @@ else
   puts "unknown repo. exiting."
   abort "nonexistent repo."
 end
+targetfile.close
 puts "fpm_spine: cleanup"
 puts "Cleaning install directory..."
 system("rm -f #{home}/.fpm/install/*")
