@@ -27,12 +27,21 @@ if(File.exist?("'C:\\Program Files (x86)\\foundationpm\\fpm'"))
     puts "User refused install."
     abort "Exit script: User aborted."
   else
-    puts "Downloading..."
-    system("curl #{target_branch}/.bin/fpm_win32_build -o fpm")
-    system("curl #{target_branch}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
-    system("curl #{target_branch}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-    system("curl #{target_branch}/src//.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-    system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
+    if target_branch == "core"
+      puts "Downloading..."
+      system("curl #{core}/.bin/fpm2_win32_build -o fpm")
+      system("curl #{core}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
+      system("curl #{core}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{core}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
+    else
+      puts "Downloading..."
+      system("curl #{live}/.bin/fpm2_win32_build -o fpm")
+      system("curl #{live}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
+      system("curl #{live}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{live}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
+    end
   end
 else
   puts "Download? [Y/n]"
@@ -42,12 +51,21 @@ else
     puts "User refused."
     abort "Exit script: User aborted."
   else
-    puts "Downloading..."
-    system("curl #{target_branch}/.bin/fpm_win32_build -o fpm")
-    system("curl #{target_branch}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
-    system("curl #{target_branch}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-    system("curl #{target_branch}/src//.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-    system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
+    if target_branch == "core"
+      puts "Downloading..."
+      system("curl #{core}/.bin/fpm2_win32_build -o fpm")
+      system("curl #{core}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
+      system("curl #{core}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{core}/src//.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
+    else
+      puts "Downloading..."
+      system("curl #{live}/.bin/fpm2_win32_build -o fpm")
+      system("curl #{live}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
+      system("curl #{live}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{live}/src//.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
+    end
   end
 end
 puts "Done."
