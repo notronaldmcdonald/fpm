@@ -40,10 +40,10 @@ if platform != "win32":
             sys.exit()
         else:
             # the aforementioned curl line is below
-            subprocess.run(["curl", "'https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/%s.tar.gz'", "-o", f"{home}/.fpm/install/%s.tar.gz" % target])
+            subprocess.run(["curl", "'https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/%s.tar'", "-o", f"{home}/.fpm/install/%s.tar" % target])
             # the aforementioned curl line is above
             print("fpm_spine: unpacking")
-            subprocess.run(["tar", "-xvzf", f"{home}/.fpm/install/%s.tar.gz" % target])
+            subprocess.run(["tar", "-xvf", f"{home}/.fpm/install/%s.tar" % target])
             exec(open("{home}/.fpm/install/fpkgd").read())
             print("fpm_spine: determine the binary")
             subprocess.run(["cp", f"{home}/.fpm/install/%s", f"{home}/.fpm/pkgs/%s" % base])
@@ -66,9 +66,9 @@ else:
             sys.exit()
         else:
             # same as the *nix section
-            subprocess.run(["curl", "'https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/%s.tar.gz'", "-o", f"{home}\\.fpm\\install\\%s.tar.gz" % target])
+            subprocess.run(["curl", "https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/%s.tar", "-o", f"{home}\\.fpm\\install\\%s.tar" % target])
             print("fpm_spine: unpacking")
-            subprocess.run(["tar", "-xvzf", f"{home}\\.fpm\\install\\%s.tar.gz" % target])
+            subprocess.run(["tar", "-xvf", f"{home}\\.fpm\\install\\%s.tar" % target])
             exec(open(f"{home}\\.fpm\\install\\fpkgd").read())
             print("fpm_spine: determine the binary")
             subprocess.run(["copy", f"{home}\\.fpm\\install\\%s", f"{home}\\.fpm\\pkgs\\%s" % base])
