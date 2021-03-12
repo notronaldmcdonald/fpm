@@ -22,6 +22,8 @@ fpm/constructor/ - the details for creating a package.
 
 fpm/src - source code directory for FPM2.
 
+fpm/.bin - precompiled binary files
+
 **Files**
 
 fpkg-stem - the file that denotes that everything around it is a
