@@ -16,6 +16,7 @@ puts "fpm_spine: uninstall"
 puts "fpm_spine: read package list"
 system("cat #{home}/.fpm/pkgs/pkglist.txt | grep -w #{target} > /tmp/.output.tmp")
 checkfile = File.open("/tmp/.output.tmp", mode)
+sleep(1)
 check = checkfile.read
 if check == "#{target}"
   puts "fpm_spine: uninstall: package exists"
