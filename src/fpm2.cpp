@@ -18,7 +18,7 @@ int main( int argc, char *argv[] ) {
   string input;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
-  const string install = "python /usr/local/bin/.fpm_spine_install.py";
+  const string install = "python /usr/local/bin/.fpm_spine_install.rb";
   const string uninstall = "python /usr/local/bin/.fpm_spine_uninstall.py";
   const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
   // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
