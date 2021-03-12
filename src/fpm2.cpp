@@ -1,5 +1,5 @@
 // Foundation Package Manager
-// A package manager written in C++/Python.
+// A package manager written in C++/Ruby (with a bit of python).
 // Developed by Brett. (https://github.com/notronaldmcdonald)
 
 // header
@@ -13,12 +13,12 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v1.9.9";
+  const string build = "v1.9.14";
   // variables here
   string input;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
-  const string install = "python /usr/local/bin/.fpm_spine_install.py";
+  const string install = "ruby /usr/local/bin/.fpm_spine_install.rb";
   const string uninstall = "python /usr/local/bin/.fpm_spine_uninstall.py";
   const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
   // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
@@ -70,10 +70,10 @@ int main( int argc, char *argv[] ) {
   if ( (argc == 3) && (string(argv[1]) == "version") ) {
     cout << "\nfpm: version";
     cout << "\n\nfpm: the foundation package manager";
-    cout << "\nwritten in C++, with the installation scripts written in python.";
+    cout << "\nwritten in C++, with components in ruby and python.";
     cout << "\nbuild: " << build;
     cout << "\n\nfpm_spine: the backbone of fpm";
-    cout << "\nwritten in python.";
+    cout << "\nwritten in ruby, with uninstall still in python.";
     cout << "\nbuild: " << build;
   }
   // install package
@@ -82,16 +82,16 @@ int main( int argc, char *argv[] ) {
     cout << "\n\nfpm: running search function";
     cout << "\nfpm: search: write target to tempfile";
     std::string target;
-    target.append("'");
+    target.append("\"");
     target.append(string(argv[2]));
-    target.append("'");
+    target.append("\"");
     ofstream targetfile;
-    targetfile.open (".target.txt");
-    targetfile << "target=" << target;
+    targetfile.open ("/tmp/.target");
+    targetfile << "target = " << target;
     targetfile.close();
-    cout << "\nfpm: search: switch to python";
+    cout << "\nfpm: search: switch to ruby";
     system(install.c_str());
-    cout << "\nfpm: search: python";
+    cout << "\nfpm: search: ruby";
     cout << "\nfpm: install: done";
     cout << "\nfpm: exit";
   }

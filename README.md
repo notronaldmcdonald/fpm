@@ -41,7 +41,7 @@ What versions are currently supported for fixes, and compatibility packages made
 ------------------------------------
 | Version | Support | Latest Build |
 |---------|---------|--------------|
-| 1.9.x   | dev     | 03/11/2021   |
+| 1.9.14+ | Yes     | 03/12/2021   |
 | 1.2.x   | Yes     | 03/11/2021   |
 | 1.1.x   | No      | 03/08/2021   |
 | 1.0.x   | No      | 03/07/2021   |

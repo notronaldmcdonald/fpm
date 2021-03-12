@@ -19,7 +19,7 @@ int main() {
   cout << "\nYour response: ";
   cin >> input;
   if (input == "windows") {
-    system(wininstall.c_str());
+    cout << "\nWindows Support is going to be added at a later date.";
   }
   else {
     system(nixinstall.c_str());
