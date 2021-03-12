@@ -10,10 +10,11 @@ home = Dir.home
 # USER - if you wish to add a repository, use this format.
 core = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs"
 live = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/live/pkgs"
+target = "test2"
 
 # begin script
 
-eval(File.read("/tmp/.target.txt"), binding)
+eval(File.read("/tmp/.target"), binding)
 puts "Welcome!"
 puts "You requested: #{target}."
 puts "Select a repository to download from:"
@@ -25,18 +26,19 @@ target_repo = gets
 target_repo = target_repo.chomp
 puts "You chose: #{target_repo}"
 # user can add more elsif blocks here
-if target_repo == 1
+if target_repo == "1"
   puts "Trying to get #{target} from core."
   system("curl #{core}/#{target}.tar.gz -o #{home}/.fpm/install/#{target}.tar.gz")
   puts "try unpack"
-  system("tar -xzvf #{home}/.fpm/install/#{target}.tar.gz #{home}/.fpm/install")
+  system("tar -xzvf #{home}/.fpm/install/#{target}.tar.gz -C #{home}/.fpm/install")
   puts "If there was no errors, the package should have been unpacked."
   puts "try transfer"
-  eval(File.read("fpkgd"), binding)
+  sleep(1)
+  eval(File.read("#{home}/.fpm/install/fpkgd"), binding)
   puts "package base is #{base}"
   system("cp #{home}/.fpm/install/#{base} #{home}/.fpm/pkgs/#{base}")
   puts "If all went well, your package should be installed. If you haven't already, add #{home}/.fpm/pkgs to your PATH variable."
-elsif target_repo == 2
+elsif target_repo == "2"
   puts "Trying to get #{target} from live."
   system("curl #{live}/#{target}.tar.gz -o #{home}/.fpm/install/#{target}.tar.gz")
   puts "try unpack"
