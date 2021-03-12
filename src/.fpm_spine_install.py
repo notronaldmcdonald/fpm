@@ -43,9 +43,7 @@ if platform != "win32":
             subprocess.run(["curl", f"{core}/%s.tar.gz", "-o", f"{home}/.fpm/install/%s.tar.gz" % target])
             # the aforementioned curl line is above
             print("fpm_spine: unpacking")
-            pkgtar = tarfile.open(f"{home}/.fpm/install/%s.tar.gz" % target)
-            pkgtar.extractall(f"{home}/.fpm/install/")
-            pkgtar.close()
+            subprocess.run(["tar", "-xvf", f"{home}/.fpm/install/%s.tar.gz" % target])
             exec(open("{home}/.fpm/install/fpkgd").read())
             print("fpm_spine: determine the binary")
             subprocess.run(["cp", f"{home}/.fpm/install/%s", f"{home}/.fpm/pkgs/%s" % base])
@@ -70,9 +68,7 @@ else:
             # same as the *nix section
             subprocess.run(["curl", f"{core}/%s.tar.gz", "-o", f"{home}\\.fpm\\install\\%s.tar.gz" % target])
             print("fpm_spine: unpacking")
-            pkgtar = tarfile.open(f"{home}\\.fpm\\install\\%s.tar.gz" % target)
-            pkgtar.extractall(f"{home}\\.fpm\\install")
-            pkgtar.close()
+            subprocess.run(["tar", "-xvf", f"{home}\\.fpm\\install\\%s.tar.gz" % target])
             exec(open(f"{home}\\.fpm\\install\\fpkgd").read())
             print("fpm_spine: determine the binary")
             subprocess.run(["copy", f"{home}\\.fpm\\install\\%s", f"{home}\\.fpm\\pkgs\\%s" % base])
