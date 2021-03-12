@@ -1,5 +1,4 @@
 fpm_base
 test
-simple_ssh
 archsync
 pickadoor
