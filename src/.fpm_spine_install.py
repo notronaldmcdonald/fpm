@@ -40,7 +40,7 @@ if platform != "win32":
             sys.exit()
         else:
             # the aforementioned curl line is below
-            subprocess.run(["curl", "'https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/%s.tar'", "-o", f"{home}/.fpm/install/%s.tar" % target])
+            subprocess.run(["curl", "https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/%s.tar", "-o", f"{home}/.fpm/install/%s.tar" % target])
             # the aforementioned curl line is above
             print("fpm_spine: unpacking")
             subprocess.run(["tar", "-xvf", f"{home}/.fpm/install/%s.tar" % target])
