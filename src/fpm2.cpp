@@ -1,5 +1,5 @@
 // Foundation Package Manager
-// A package manager written in C++/Python.
+// A package manager written in C++/Ruby (with a bit of python).
 // Developed by Brett. (https://github.com/notronaldmcdonald)
 
 // header
@@ -13,7 +13,7 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v1.9.9";
+  const string build = "v1.9.14";
   // variables here
   string input;
   // system commands
@@ -70,10 +70,10 @@ int main( int argc, char *argv[] ) {
   if ( (argc == 3) && (string(argv[1]) == "version") ) {
     cout << "\nfpm: version";
     cout << "\n\nfpm: the foundation package manager";
-    cout << "\nwritten in C++, with the installation scripts written in python.";
+    cout << "\nwritten in C++, with components in ruby and python.";
     cout << "\nbuild: " << build;
     cout << "\n\nfpm_spine: the backbone of fpm";
-    cout << "\nwritten in python.";
+    cout << "\nwritten in ruby, with uninstall still in python.";
     cout << "\nbuild: " << build;
   }
   // install package
@@ -89,9 +89,9 @@ int main( int argc, char *argv[] ) {
     targetfile.open ("/tmp/.target");
     targetfile << "target = " << target;
     targetfile.close();
-    cout << "\nfpm: search: switch to python";
+    cout << "\nfpm: search: switch to ruby";
     system(install.c_str());
-    cout << "\nfpm: search: python";
+    cout << "\nfpm: search: ruby";
     cout << "\nfpm: install: done";
     cout << "\nfpm: exit";
   }
