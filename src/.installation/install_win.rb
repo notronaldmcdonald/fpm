@@ -32,14 +32,14 @@ if(File.exist?("'C:\\Program Files (x86)\\foundationpm\\fpm'"))
       system("curl #{core}/.bin/fpm2_win32_build -o fpm")
       system("curl #{core}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
       system("curl #{core}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-      system("curl #{core}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{core}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_uninstall.py'")
       system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
     else
       puts "Downloading..."
       system("curl #{live}/.bin/fpm2_win32_build -o fpm")
       system("curl #{live}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
       system("curl #{live}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-      system("curl #{live}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{live}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_uninstall.py'")
       system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
     end
   end
@@ -56,14 +56,14 @@ else
       system("curl #{core}/.bin/fpm2_win32_build -o fpm")
       system("curl #{core}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
       system("curl #{core}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-      system("curl #{core}/src//.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{core}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_uninstall.py'")
       system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
     else
       puts "Downloading..."
       system("curl #{live}/.bin/fpm2_win32_build -o fpm")
       system("curl #{live}/src/.fpm_glasses.rb -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_glasses.rb'")
       system("curl #{live}/src/.fpm_spine_install.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
-      system("curl #{live}/src//.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_install.py'")
+      system("curl #{live}/src/.fpm_spine_uninstall.py -o 'C:\\Program Files (x86)\\foundationpm\\.fpm_spine_uninstall.py'")
       system("copy fpm 'C:\\Program Files (x86)\\foundationpm\\fpm'")
     end
   end
