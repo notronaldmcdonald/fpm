@@ -51,6 +51,6 @@ Syntax: fpm <command> <target>
 
 * **version** - With any argument, gets the current version of FPM running.
 
-* **changelog** - With any argument, fetches the [CHANGELOG.md](fpm/core/CHANGELOG.md) file and prints it to the user.
+* **changelog** - With any argument, fetches the [CHANGELOG.md](core/CHANGELOG.md) file and prints it to the user.
 
 * **help** - Displays FPM help with the target 'fpm', or tells the user where the helpfiles directory is.
