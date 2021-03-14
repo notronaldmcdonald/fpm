@@ -4,7 +4,7 @@
 
 # dependency
 
-require 'colorize'
+Bundler.require(:default)
 
 # some variables
 
@@ -15,27 +15,27 @@ mode = "r"
 
 targetstore = File.open("/tmp/.target.txt", mode)
 target = targetstore.read
-puts "fpm_spine: ruby script"
-puts "fpm_spine: uninstall"
-puts "fpm_spine: read package list"
+puts "fpm_spine: ruby script".green
+puts "fpm_spine: uninstall".red
+puts "fpm_spine: read package list".yellow
 system("cat #{home}/.fpm/pkgs/pkglist.txt | grep -w #{target} > /tmp/.output.tmp")
 checkfile = File.size("/tmp/.output.tmp")
 sleep(1)
 if checkfile != "0"
-  puts "fpm_spine: uninstall: package exists"
-  puts "fpm_spine: uninstall: remove? [Y/n] "
+  puts "fpm_spine: uninstall: package exists".green
+  puts "fpm_spine: uninstall: remove? [Y/n] ".yellow
   removeconfirm = gets
   removeconfirm = removeconfirm.chomp
   if removeconfirm == "n"
     puts "fpm_spine: uninstall: user denied."
-    abort "fpm_spine: fatal: uninstall failed (user aborted)"
+    abort "fpm_spine: fatal: uninstall failed (user aborted)".red
   else
-    puts "fpm_spine: uninstall: removing package..."
+    puts "fpm_spine: uninstall: removing package...".yellow
     system("rm -f #{home}/.fpm/pkgs/#{target}")
-    puts "fpm_spine: uninstall: package should be removed."
+    puts "fpm_spine: uninstall: package should be removed.".green
   end
 else
-  puts "fpm_spine: uninstall: package not found."
-  abort "fpm_spine: fatal: package not found."
+  puts "fpm_spine: uninstall: package not found.".blue
+  abort "fpm_spine: fatal: package not found.".red
 end
-puts "fpm_spine: done."
+puts "fpm_spine: done.".green
