@@ -2,7 +2,11 @@
 
 ## What's new?
 
-### Version 2.0.0-devel
+## Version 2.0.1
+
+  * Added the documentation browser: A way to see all of the documentation for the project through FPM itself.
+
+### Version 2.0.0
 
   * Added colorization.
 
