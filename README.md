@@ -55,3 +55,5 @@ Syntax: fpm <command> <target>
 * **changelog** - With any argument, fetches the [CHANGELOG.md](CHANGELOG.md) file and prints it to the user.
 
 * **help** - Displays FPM help with the target 'fpm', or tells the user where the helpfiles directory is.
+
+* **docs** - Starts a tool that allows you to print any documentation on the repository to your console.
