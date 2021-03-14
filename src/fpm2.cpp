@@ -53,9 +53,12 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v2.0.0";
+  const string build = "v2.0.1";
   // variables here
   string input;
+  int dinput;
+  string confirm_dinput;
+  int k = 6;
   // system commands
   //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
   const string install = "ruby /usr/local/bin/.fpm_spine_install.rb";
@@ -64,10 +67,76 @@ int main( int argc, char *argv[] ) {
   const string getchangelog = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md -o /tmp/CHANGELOG.md";
   const string readchangelog = "cat /tmp/CHANGELOG.md";
   const string cleanchangelog = "rm -f /tmp/CHANGELOG.md";
+  const string getdoc1 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/README.md";
+  const string getdoc2 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/constructor/README.md";
+  const string getdoc3 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md";
+  const string getdoc4 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CONTRIBUTING.md";
+  const string getdoc5 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md";
+  const string getdoc6 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE";
+  const string getdoc7 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md";
   // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
 
   // process starts here
   // tell the user the syntax is wrong
+  if ( (argc == 2) && (string(argv[1]) == "docs") ) {
+    while (k == 6) {
+    yellow();
+    cout << "\nfpm: documentation";
+    white();
+      cout << "\n\nThe Foundation Package Manager (build " << build << ")";
+      cout << "\n\nWelcome to the Foundation Package Manager documentation browser.";
+      cout << "\nThis tool is intended to allow users to access the documentation from the commandline.";
+      cout << "\nSelect a documentation resource from the following list:";
+      cout << "\n\n1. README";
+      cout << "\n2. construct_README";
+      cout << "\n3. CHANGELOG";
+      cout << "\n4. CONTRIBUTING";
+      cout << "\n5. INSTALL";
+      cout << "\n6. LICENSE";
+      cout << "\n7. devel";
+      cout << "\n\nType the number of the documentation file you wish to download: ";
+      cout << "\nPress CTRL+C to exit.\n";
+      cin >> dinput;
+      cout << "\nYou entered: " << dinput;
+      cout << "\nIs this correct? [Y/n]\n";
+      cin >> confirm_dinput;
+      cout << "\nfpm: evaluating...";
+      if (confirm_dinput == "n") {
+        cout << "\nfpm: user aborted.";
+        break;
+      }
+      else {
+        if (dinput == 1) {
+          system(getdoc1.c_str());
+        }
+        else if (dinput == 2) {
+          system(getdoc2.c_str());
+        }
+        else if (dinput == 3) {
+          system(getdoc3.c_str());
+        }
+        else if  (dinput == 4) {
+          system(getdoc4.c_str());
+        }
+        else if (dinput == 5) {
+          system(getdoc5.c_str());
+        }
+        else if (dinput == 6) {
+          system(getdoc6.c_str());
+        }
+        else if (dinput == 7) {
+          system(getdoc7.c_str());
+        }
+        else {
+          cout << "\nfpm: invalid";
+          red();
+          cout << "\nfpm: fatal: unknown documentation.";
+          white();
+          break;
+        }
+      }
+    }
+  }
   if ( argc != 3 ) {
     red();
     cout << "\nerror: invalid syntax. usage: " << argv[0] << " <operation> <target>";
