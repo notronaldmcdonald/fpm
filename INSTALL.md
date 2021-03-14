@@ -4,7 +4,7 @@
 ### How?
 
 Simple: Download the latest release's `install_scripts.zip` archive. The archive includes a compiled C++ program for you to interact with,
-as well as the pure install scripts written in ruby. This is the easiest way to install the software.
+as well as the pure install scripts written in ruby. This is the easiest way to install the software. Run with `sudo`, as it needs access to /usr/local/bin
 
 Build from source: Download the source code archive from the latest release. This is to ensure you're still getting working code.
 

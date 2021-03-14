@@ -53,7 +53,7 @@ using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v2.0.0-devel";
+  const string build = "v2.0.0";
   // variables here
   string input;
   // system commands
