@@ -30,12 +30,30 @@ SOFTWARE. */
 #include <cmath>
 #include <fstream>
 #include <cstdio>
+#include <stdlib.h>
+
+// declare colorization functions
+void yellow() {
+  system("tput setaf 11");
+}
+void white() {
+  system("tput setaf 15");
+}
+void red() {
+  system("tput setaf 9");
+}
+void green() {
+  system("tput setaf 10");
+}
+void blue() {
+  system("tput setaf 14");
+}
 
 using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
   // define the code build running
-  const string build = "v1.9.15";
+  const string build = "v2.0.0";
   // variables here
   string input;
   // system commands
@@ -51,6 +69,7 @@ int main( int argc, char *argv[] ) {
   // process starts here
   // tell the user the syntax is wrong
   if ( argc != 3 ) {
+    red();
     cout << "\nerror: invalid syntax. usage: " << argv[0] << " <operation> <target>";
   }
   else {
@@ -58,7 +77,9 @@ int main( int argc, char *argv[] ) {
   }
   // print the fpm help
   if ( (argc == 3) && (string(argv[1]) == "help") && (string(argv[2]) == "fpm") ) {
+    yellow();
     cout << "fpm: help";
+    white();
     cout << "\n\ninstall: install a program";
     cout << "\nuninstall: uninstall a program";
     cout << "\nsearch: search repositories for a program";
@@ -67,7 +88,9 @@ int main( int argc, char *argv[] ) {
   }
   // tell the user where help files are
   else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
+    yellow();
     cout << "fpm: help";
+    white();
     cout << "\n\nhelp documentation for every package installed (that has help documentation) is located in a ~/.fpm/help/<program>_help.txt file";
     cout << "\n(on windows, that's in your user folder.)";
   }
@@ -94,17 +117,24 @@ int main( int argc, char *argv[] ) {
     //}
   // version check
   if ( (argc == 3) && (string(argv[1]) == "version") ) {
+    yellow();
     cout << "\nfpm: version";
+    white();
     cout << "\n\nfpm: the foundation package manager";
     cout << "\nwritten in C++, with components in ruby and python.";
+    blue();
     cout << "\nbuild: " << build;
+    white();
     cout << "\n\nfpm_spine: the backbone of fpm";
     cout << "\nwritten in ruby, with uninstall still in python.";
+    blue();
     cout << "\nbuild: " << build;
   }
   // install package
   if ( (argc == 3) && (string(argv[1]) == "install") ) {
+    yellow();
     cout << "\nfpm: install";
+    white();
     cout << "\n\nfpm: running search function";
     cout << "\nfpm: search: write target to tempfile";
     std::string target;
@@ -113,14 +143,19 @@ int main( int argc, char *argv[] ) {
     targetfile.open ("/tmp/.target");
     targetfile << target;
     targetfile.close();
+    yellow();
     cout << "\nfpm: search: switch to ruby";
+    white();
     system(install.c_str());
     cout << "\nfpm: search: ruby";
     cout << "\nfpm: install: done";
+    green();
     cout << "\nfpm: exit";
+    white();
   }
   // uninstall package
   if ( (argc == 3) && (string(argv[1]) == "uninstall") ) {
+    yellow();
     cout << "\nfpm: uninstall";
     std::string target;
     target.append(string(argv[2]));
@@ -129,24 +164,34 @@ int main( int argc, char *argv[] ) {
     targetfile << target;
     targetfile.close();
     cout << "\nfpm: run spine script";
+    white();
     system(uninstall.c_str());
   }
   // search
   if ( (argc == 3) && (string(argv[1]) == "search") ) {
+    yellow();
     cout << "\nfpm: search";
+    white();
     system(search.c_str());
   }
   if ( (argc == 3) && (string(argv[1]) == "changelog") ) {
+    yellow();
     cout << "\nfpm: changelog";
+    blue();
     cout << "\nfpm: changelog: download";
+    white();
     system(getchangelog.c_str());
+    yellow();
     cout << "\nfpm: changelog";
+    white();
     cout << "\nfpm: changelog: read";
     system(readchangelog.c_str());
     cout << "\nfpm: changelog";
     cout << "\nfpm: cleaning up";
     system(cleanchangelog.c_str());
+    green();
     cout << "\nfpm: exit";
+    white();
   }
 }
 

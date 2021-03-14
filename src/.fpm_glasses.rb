@@ -3,6 +3,10 @@
 # Linux Only
 # Developed by Brett. (https://github.com/notronaldmcdonald)
 
+# dependency
+
+require 'colorize'
+
 # variables
 
 home = Dir.home
@@ -12,12 +16,12 @@ test = "https://raw.githubusercontent.com/notronaldmcdonald/fpm/live/pkgs/index.
 
 # begin script
 
-puts "Welcome!"
+puts "Welcome!".green
 puts "\nFPM Glasses 0.1.0"
-puts "Enter a search target: "
+puts "Enter a search target: ".yellow
 query = gets
 query = query.chomp
-puts "Okay! Looking up #{query}..."
+puts "Okay! Looking up #{query}...".blue
 # this is the search line
 system("curl -s #{core} -o .index.tmp")
 # the search line is above
@@ -25,9 +29,9 @@ system("grep -w #{query} .index.tmp > .output.tmp")
 s = File.size(".output.tmp")
 sleep(1)
 if s == 0
-  puts "Package #{query} doesn't seem to exist. Sorry!"
+  puts "Package #{query} doesn't seem to exist. Sorry!".red
 else
-  puts "Package #{query} seems to exist."
+  puts "Package #{query} seems to exist.".green
 end
 puts "glasses: cleaning up"
 sleep(2)

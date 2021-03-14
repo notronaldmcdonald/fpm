@@ -2,6 +2,10 @@
 
 ## What's new?
 
+### Version 2.0.0-devel
+
+  * Added colorization.
+
 ### Version 1.9.15-rev2
 
   * Fixed issues with the uninstall script.
