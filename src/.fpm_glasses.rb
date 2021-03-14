@@ -3,6 +3,10 @@
 # Linux Only
 # Developed by Brett. (https://github.com/notronaldmcdonald)
 
+# dependency
+
+require 'colorize'
+
 # variables
 
 home = Dir.home

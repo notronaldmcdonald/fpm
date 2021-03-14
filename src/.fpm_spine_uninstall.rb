@@ -2,6 +2,10 @@
 # spine_uninstall
 # Developed by Brett. (https://github.com/notronaldmcdonald)
 
+# dependency
+
+require 'colorize'
+
 # some variables
 
 home = Dir.home
