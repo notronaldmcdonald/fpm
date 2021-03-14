@@ -4,7 +4,7 @@
 
 # dependency
 
-Bundler.require(:default)
+require 'colorize'
 
 # variables
 

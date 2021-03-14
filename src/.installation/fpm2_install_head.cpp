@@ -12,6 +12,7 @@ int main() {
   // commands
   const string wininstall = "ruby install_win.rb";
   const string nixinstall = "ruby install_nix.rb";
+  const string installdep = "gem install colorize";
   // variable
   string input;
   // ask for operating system
@@ -24,5 +25,7 @@ int main() {
   else {
     system(nixinstall.c_str());
   }
+  cout << "\nInstalling gem 'colorize'. (dependency)";
+  system(installdep.c_str());
   cout << "\ncoolio.";
 }
