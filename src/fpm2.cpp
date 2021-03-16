@@ -58,8 +58,8 @@ int main( int argc, char *argv[] ) {
   // INFO
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
-    const string buildType = "pre"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
-    const string build = "v2.0.2"; // build indicates the version number for the release when the code is compiled.
+    const string buildType = "devel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
+    const string build = "v2.0.3-dev.1"; // build indicates the version number for the release when the code is compiled.
   // INPUT
     string input; // general input string
     int dinput; // documentation browser's input
@@ -202,6 +202,8 @@ int main( int argc, char *argv[] ) {
     cout << "\nsearch: search repositories for a program";
     cout << "\nversion: display fpm version + subscript versions.";
     cout << "\nchangelog: get the CHANGELOG.md file from upstream/core.";
+    cout << "\ndocs: display the documentation browser.";
+    cout << "\nhelp: display the help documentation browser.";
   }
   // tell the user where help files are
   /* else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
