@@ -2,8 +2,9 @@
 # spine_install
 # Developed by Brett. (https://github.com/notronaldmcdonald)
 
-# dependency
+# dependencies
 
+require 'fileutils'
 require 'colorize'
 
 # variables
@@ -35,6 +36,27 @@ puts "You chose: #{target_repo}"
 if target_repo == "1"
   puts "Trying to get #{target} from core.".blue
   system("curl #{core}/#{target}.tar.gz -o #{home}/.fpm/install/#{target}.tar.gz")
+  puts "Verifying package intergrity..."
+  system("sha256sum #{home}/.fpm/install/#{target}.tar.gz > /tmp/fpm_checksum")
+  system("curl -fs #{core}/#{target}.tar.gz -o /tmp/fpm_compare_sum")
+  solid = FileUtils.identical?("/tmp/fpm_checksum", "/tmp/fpm_compare_sum")
+  if solid == "false"
+    puts "Unable to verify package integrity."
+    puts "Install anyways? [y/N]"
+    disregardcheck = gets
+    disregardcheck = disregardcheck.chomp
+    if disregardcheck == "y"
+      puts "Disregard integrity check and try unpack".red
+    else
+      puts "Cancelling..."
+      puts "Cleanup directories..."
+      system("rm -f #{home}/.fpm/install/*")
+      system("rm -f /tmp/fpm_*")
+      abort "fpm: fatal: package integrity could not be verified."
+    end
+  else
+    puts "Package solid".green
+  end
   puts "try unpack".blue
   system("tar -xzvf #{home}/.fpm/install/#{target}.tar.gz -C #{home}/.fpm/install")
   puts "If there was no errors, the package should have been unpacked.".yellow
