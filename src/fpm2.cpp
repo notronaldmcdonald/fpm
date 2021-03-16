@@ -155,7 +155,7 @@ int main( int argc, char *argv[] ) {
     cout << "\nbuild: " << build;
     cout << "\nbuildType: " << buildType;
     white();
-    cout << "\nIf the buildType string is 'devel' or 'pre', you are dealing with non-release code. (or i forgot to fix the tag before releasing)"
+    cout << "\nIf the buildType string is 'devel' or 'pre', you are dealing with non-release code. (or i forgot to fix the tag before releasing)";
   }
   // search command
   if ( (argc == 2) && (string(argv[1]) == "search") ) {
@@ -165,7 +165,7 @@ int main( int argc, char *argv[] ) {
     system(search.c_str());
   }
   // changelog command
-  if ( (argc == 3) && (string(argv[1]) == "changelog") ) {
+  if ( (argc == 2) && (string(argv[1]) == "changelog") ) {
     yellow();
     cout << "\nfpm: changelog";
     blue();
@@ -185,12 +185,12 @@ int main( int argc, char *argv[] ) {
     white();
   }
   // syntax error
-  if ( argc != 3 ) {
+  if ( ( argc != 3 ) && (string(argv[1]) != "changelog") && (string(argv[1]) != "search") && (string(argv[1]) != "version") ) {
     red();
     cout << "\nerror: invalid syntax. usage: " << argv[0] << " <operation> <target>";
   }
   else {
-    cout << "fpm: all good\n\n";
+    cout << "\nfpm: all good\n\n";
   }
   // print the fpm help
   if ( (argc == 3) && (string(argv[1]) == "help") && (string(argv[2]) == "fpm") ) {
