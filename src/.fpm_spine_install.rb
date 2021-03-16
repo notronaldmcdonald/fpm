@@ -10,6 +10,7 @@ require 'colorize'
 # variables
 
 home = Dir.home
+op_sys = RUBY_PLATFORM
 
 # repository targets
 # USER - if you wish to add a repository, use this format.
