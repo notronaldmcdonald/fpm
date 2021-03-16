@@ -32,7 +32,7 @@ What versions are currently supported for fixes, and compatibility packages made
 |---------|---------|--------------|
 | 2.0.x   | Yes     | 03/14/2021   |
 | 1.9.14+ | No      | 03/13/2021   |
-| 1.2.x   | Yes     | 03/11/2021   |
+| 1.2.x   | No      | 03/11/2021   |
 | 1.1.x   | No      | 03/08/2021   |
 | 1.0.x   | No      | 03/07/2021   |
 | 0.1.x   | No      | 03/10/2021   |

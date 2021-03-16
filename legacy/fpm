@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # The Foundation Package Manager.
 # Developed by Brett. (https://github.com/notronaldmcdonald/fpm)
+# THIS PROGRAM IS NO LONGER SUPPORTED.
+# REASON - It wasn't popular anyways, and I'd rather not worry about maintaining this. Will remain in repo for archive purposes, but otherwise dead.
 if [ -e $HOME/foundation/foundation-base ]; then
   source $HOME/foundation/foundation-base
 else
