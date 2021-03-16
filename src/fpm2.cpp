@@ -59,11 +59,13 @@ int main( int argc, char *argv[] ) {
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
     const string buildType = "devel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
-    const string build = "v2.0.3-dev.1"; // build indicates the version number for the release when the code is compiled.
+    const string build = "v2.0.3-dev.2"; // build indicates the version number for the release when the code is compiled. however, i also apply it internally to track versioning.
   // INPUT
     string input; // general input string
     int dinput; // documentation browser's input
     string confirm_dinput; // documentation browser confirm
+    string hinput; // help browser's input
+    string confirm_hinput; // help browser's confirm
   // RANDOM
     int k = 6; // used only to operate the while loop
   // SYSTEM COMMANDS
@@ -184,8 +186,23 @@ int main( int argc, char *argv[] ) {
     cout << "\nfpm: exit";
     white();
   }
+  // help browser
+  if ( (argc == 2) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
+    yellow();
+    cout << "fpm: help";
+    white();
+    cout << "\n\nWelcome to the Help file browser.";
+    cout << "\nEnter the name of the package you want to look up help files for.";
+    cout << "\nPlease note that not every package includes help documentation.";
+    cout << "\nEnter the name of the package you want to get help for: ";
+    cin >> hinput;
+    cout << "\nIs the package " << hinput << "correct?";
+    cout << "\nPlease confirm (y or n): ";
+    cin >> confirm_hinput;
+    cout << "\nEvaluating confirmation...";
+  }
   // syntax error
-  if ( ( argc != 3 ) && (string(argv[1]) != "changelog") && (string(argv[1]) != "search") && (string(argv[1]) != "version") ) {
+  if ( ( argc != 3 ) && (string(argv[1]) != "changelog") && (string(argv[1]) != "search") && (string(argv[1]) != "version") && (string(argv[1]) != "help") ) {
     red();
     cout << "\nerror: invalid syntax. usage: " << argv[0] << " <operation> <target>";
   }
@@ -205,16 +222,6 @@ int main( int argc, char *argv[] ) {
     cout << "\ndocs: display the documentation browser.";
     cout << "\nhelp: display the help documentation browser.";
   }
-  // tell the user where help files are
-  /* else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
-    yellow();
-    cout << "fpm: help";
-    white();
-    cout << "\n\nhelp documentation for every package installed (that has help documentation) is located in a ~/.fpm/help/<program>_help.txt file";
-    cout << "\n(on windows, that's in your user folder.)";
-  }
-  this has been commented out because it may be relevant again in the future */
-
   // install package
   if ( (argc == 3) && (string(argv[1]) == "install") ) {
     yellow();
