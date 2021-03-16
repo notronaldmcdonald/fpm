@@ -60,7 +60,6 @@ int main( int argc, char *argv[] ) {
   string confirm_dinput;
   int k = 6;
   // system commands
-  //const string installfpmcommand = "python /usr/local/bin/.fpm_spine_install_fpm.py";
   const string install = "ruby /usr/local/bin/.fpm_spine_install.rb";
   const string uninstall = "ruby /usr/local/bin/.fpm_spine_uninstall.rb";
   const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
@@ -74,10 +73,8 @@ int main( int argc, char *argv[] ) {
   const string getdoc5 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md";
   const string getdoc6 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE";
   const string getdoc7 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md";
-  // obsolete - const string getindex = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/pkgs/index.txt -o .index.tmp";
 
   // process starts here
-  // tell the user the syntax is wrong
   if ( (argc == 2) && (string(argv[1]) == "docs") ) {
     while (k == 6) {
     yellow();
@@ -137,6 +134,7 @@ int main( int argc, char *argv[] ) {
       }
     }
   }
+  // syntax error
   if ( argc != 3 ) {
     red();
     cout << "\nerror: invalid syntax. usage: " << argv[0] << " <operation> <target>";
@@ -156,34 +154,14 @@ int main( int argc, char *argv[] ) {
     cout << "\nchangelog: get the CHANGELOG.md file from upstream/core.";
   }
   // tell the user where help files are
-  else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
+  /* else if ( (argc == 3) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
     yellow();
     cout << "fpm: help";
     white();
     cout << "\n\nhelp documentation for every package installed (that has help documentation) is located in a ~/.fpm/help/<program>_help.txt file";
     cout << "\n(on windows, that's in your user folder.)";
   }
-  // install fpm - disabled by default
-  //if ( (argc == 3) && (string(argv[1]) == "install") && (string(argv[2]) == "fpm") ) {
-    //cout << "fpm: install";
-    //cout << "\n\n------------------------------------------";
-    //cout << "\n found package 'fpm' at core/pkgs/fpm.tar";
-    //cout << "\n\ninstall package 'fpm' from core/fpm? [Y/n]\n";
-    //cout << "\n------------------------------------------\n";
-    //cout << "Enter your command: ";
-    //cin >> input;
-    //cout << "\nfpm: install: user input: " << input;
-    //if ( (string(input) == "n") ) {
-      //cout << "\nfpm: install: user refused install.";
-    //}
-    //else {
-      //cout << "\nfpm: install: user accepted install.";
-      //cout << "\nfpm: install: installing package 'fpm' from core/fpm...";
-      //system(installfpmcommand.c_str());
-      //cout << "\nfpm: install: returning from spine";
-      //cout << "\nfpm: finishing install of self";
-      //cout << "\nfpm: package 'fpm' installed. add ~/.fpm/pkgs to your PATH if you haven't done so.";
-    //}
+  this has been commented out because it may be relevant again in the future */ 
   // version check
   if ( (argc == 3) && (string(argv[1]) == "version") ) {
     yellow();
