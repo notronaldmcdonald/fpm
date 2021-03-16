@@ -58,8 +58,8 @@ int main( int argc, char *argv[] ) {
   // INFO
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
-    const string buildType = "devel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
-    const string build = "v2.0.1"; // build indicates the version number for the release when the code is compiled.
+    const string buildType = "pre"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
+    const string build = "v2.0.2"; // build indicates the version number for the release when the code is compiled.
   // INPUT
     string input; // general input string
     int dinput; // documentation browser's input
