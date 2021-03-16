@@ -59,7 +59,7 @@ int main( int argc, char *argv[] ) {
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
     const string buildType = "devel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
-    const string build = "v2.0.3-dev.2"; // build indicates the version number for the release when the code is compiled. however, i also apply it internally to track versioning.
+    const string build = "v2.0.3-dev.3"; // build indicates the version number for the release when the code is compiled. however, i also apply it internally to track versioning.
   // INPUT
     string input; // general input string
     int dinput; // documentation browser's input
@@ -82,6 +82,8 @@ int main( int argc, char *argv[] ) {
   const string getdoc5 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md";
   const string getdoc6 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE";
   const string getdoc7 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md";
+  const string helpbrowser = "ruby /usr/local/bin/.fpm_spine_help.rb";
+  const string debug = "echo \"debug message\""; // this is a developer tool used to test the system command.
 // END OF VARIABLES
 
   // commands start here
@@ -187,19 +189,11 @@ int main( int argc, char *argv[] ) {
     white();
   }
   // help browser
-  if ( (argc == 2) && (string(argv[1]) != "install") && (string(argv[2]) != "fpm") && (string(argv[1]) == "help") ) {
-    yellow();
-    cout << "fpm: help";
-    white();
-    cout << "\n\nWelcome to the Help file browser.";
-    cout << "\nEnter the name of the package you want to look up help files for.";
-    cout << "\nPlease note that not every package includes help documentation.";
-    cout << "\nEnter the name of the package you want to get help for: ";
-    cin >> hinput;
-    cout << "\nIs the package " << hinput << "correct?";
-    cout << "\nPlease confirm (y or n): ";
-    cin >> confirm_hinput;
-    cout << "\nEvaluating confirmation...";
+  else if ( (argc == 2) && (string(argv[1]) == "help") ) {
+    cout << "\nfpm: help";
+    cout << "\nfpm: runscript";
+    system(helpbrowser.c_str());
+    cout << "\nfpm: exit";
   }
   // syntax error
   if ( ( argc != 3 ) && (string(argv[1]) != "changelog") && (string(argv[1]) != "search") && (string(argv[1]) != "version") && (string(argv[1]) != "help") ) {
