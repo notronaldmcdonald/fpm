@@ -28,6 +28,7 @@ SOFTWARE. */
 #include <iostream>
 #include <string.h>
 #include <cmath>
+#include <cstdlib>
 #include <fstream>
 #include <cstdio>
 #include <stdlib.h>
@@ -52,14 +53,20 @@ void blue() {
 using namespace std;
 // code starts here
 int main( int argc, char *argv[] ) {
-  // define the code build running
-  const string build = "v2.0.1";
-  // variables here
-  string input;
-  int dinput;
-  string confirm_dinput;
-  int k = 6;
-  // system commands
+// VARIABLES - all of the variables from versions to commands.
+
+  // INFO
+    // define the code build running
+    // these are mostly to allow checking if code is deemed stable or not before publishing.
+    const string buildType = "devel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
+    const string build = "v2.0.1"; // build indicates the version number for the release when the code is compiled.
+  // INPUT
+    string input; // general input string
+    int dinput; // documentation browser's input
+    string confirm_dinput; // documentation browser confirm
+  // RANDOM
+    int k = 6; // used only to operate the while loop
+  // SYSTEM COMMANDS
   const string install = "ruby /usr/local/bin/.fpm_spine_install.rb";
   const string uninstall = "ruby /usr/local/bin/.fpm_spine_uninstall.rb";
   const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
@@ -73,8 +80,11 @@ int main( int argc, char *argv[] ) {
   const string getdoc5 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md";
   const string getdoc6 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE";
   const string getdoc7 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md";
+// END OF VARIABLES
 
-  // process starts here
+  // commands start here
+
+  // documentation browser
   if ( (argc == 2) && (string(argv[1]) == "docs") ) {
     while (k == 6) {
     yellow();
@@ -134,6 +144,46 @@ int main( int argc, char *argv[] ) {
       }
     }
   }
+  // version command
+  if ( (argc == 2) && (string(argv[1]) == "version") ) {
+    yellow();
+    cout << "\nfpm: version";
+    white();
+    cout << "\n\nfpm: the foundation package manager";
+    cout << "\nwritten in C++, with components in ruby and python.";
+    blue();
+    cout << "\nbuild: " << build;
+    cout << "\nbuildType: " << buildType;
+    white();
+    cout << "\nIf the buildType string is 'devel' or 'pre', you are dealing with non-release code. (or i forgot to fix the tag before releasing)"
+  }
+  // search command
+  if ( (argc == 2) && (string(argv[1]) == "search") ) {
+    yellow();
+    cout << "\nfpm: search";
+    white();
+    system(search.c_str());
+  }
+  // changelog command
+  if ( (argc == 3) && (string(argv[1]) == "changelog") ) {
+    yellow();
+    cout << "\nfpm: changelog";
+    blue();
+    cout << "\nfpm: changelog: download";
+    white();
+    system(getchangelog.c_str());
+    yellow();
+    cout << "\nfpm: changelog";
+    white();
+    cout << "\nfpm: changelog: read";
+    system(readchangelog.c_str());
+    cout << "\nfpm: changelog";
+    cout << "\nfpm: cleaning up";
+    system(cleanchangelog.c_str());
+    green();
+    cout << "\nfpm: exit";
+    white();
+  }
   // syntax error
   if ( argc != 3 ) {
     red();
@@ -161,22 +211,8 @@ int main( int argc, char *argv[] ) {
     cout << "\n\nhelp documentation for every package installed (that has help documentation) is located in a ~/.fpm/help/<program>_help.txt file";
     cout << "\n(on windows, that's in your user folder.)";
   }
-  this has been commented out because it may be relevant again in the future */ 
-  // version check
-  if ( (argc == 3) && (string(argv[1]) == "version") ) {
-    yellow();
-    cout << "\nfpm: version";
-    white();
-    cout << "\n\nfpm: the foundation package manager";
-    cout << "\nwritten in C++, with components in ruby and python.";
-    blue();
-    cout << "\nbuild: " << build;
-    white();
-    cout << "\n\nfpm_spine: the backbone of fpm";
-    cout << "\nwritten in ruby, with uninstall still in python.";
-    blue();
-    cout << "\nbuild: " << build;
-  }
+  this has been commented out because it may be relevant again in the future */
+
   // install package
   if ( (argc == 3) && (string(argv[1]) == "install") ) {
     yellow();
@@ -213,32 +249,6 @@ int main( int argc, char *argv[] ) {
     cout << "\nfpm: run spine script";
     white();
     system(uninstall.c_str());
-  }
-  // search
-  if ( (argc == 3) && (string(argv[1]) == "search") ) {
-    yellow();
-    cout << "\nfpm: search";
-    white();
-    system(search.c_str());
-  }
-  if ( (argc == 3) && (string(argv[1]) == "changelog") ) {
-    yellow();
-    cout << "\nfpm: changelog";
-    blue();
-    cout << "\nfpm: changelog: download";
-    white();
-    system(getchangelog.c_str());
-    yellow();
-    cout << "\nfpm: changelog";
-    white();
-    cout << "\nfpm: changelog: read";
-    system(readchangelog.c_str());
-    cout << "\nfpm: changelog";
-    cout << "\nfpm: cleaning up";
-    system(cleanchangelog.c_str());
-    green();
-    cout << "\nfpm: exit";
-    white();
   }
 }
 
