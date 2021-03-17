@@ -2,7 +2,14 @@
 
 ## What's new?
 
-## Version 2.0.1
+### Version 2.0.3
+
+  * Added the help file browser.
+  * Updated installation scripts.
+  * Cleaned up some of the code.
+  * Added package integrity checks.
+
+### Version 2.0.1
 
   * Added the documentation browser: A way to see all of the documentation for the project through FPM itself.
 
