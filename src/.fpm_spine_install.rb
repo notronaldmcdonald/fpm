@@ -39,7 +39,8 @@ if target_repo == "1"
   system("curl #{core}/#{target}.tar.gz -o #{home}/.fpm/install/#{target}.tar.gz")
   puts "Verifying package intergrity..."
   system("sha256sum #{home}/.fpm/install/#{target}.tar.gz > /tmp/fpm_checksum")
-  system("curl -fs #{core}/#{target}.tar.gz -o /tmp/fpm_compare_sum")
+  system("curl -fs #{core}/#{target}.tar.gz -o /tmp/pkg.tar.gz")
+  system("sha256sum /tmp/pkg.tar.gz > /tmp/fpm_compare_sum")
   solid = FileUtils.identical?("/tmp/fpm_checksum", "/tmp/fpm_compare_sum")
   if solid == "false"
     puts "Unable to verify package integrity."
