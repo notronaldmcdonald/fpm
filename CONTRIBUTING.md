@@ -18,6 +18,9 @@ If you're a stranger who just came across this project and wants to submit somet
 
 * Your package name must match the binary inside.
 
+* If you wish, include help documentation with your package. These go in /pkgs/help
+  * Use the same name for the help file as your package.
+
 **General**
 
 * Make your pull requests against the 'live' branch.
