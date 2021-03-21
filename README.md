@@ -12,7 +12,7 @@ core branch - The release branch of the project.
 Tested to be working.
 
 live branch - The working branch of the project.
-Not fully tested, script is typically fresh off the griddle.
+Not fully tested, script is typically fresh off the grill.
 
 **Directories**
 
@@ -30,6 +30,7 @@ What versions are currently supported for fixes, and compatibility packages made
 ------------------------------------
 | Version | Support | Latest Build |
 |---------|---------|--------------|
+| 2.1.x   | Yes     | 03/19/2021   |
 | 2.0.x   | Yes     | 03/14/2021   |
 | 1.9.14+ | No      | 03/13/2021   |
 | 1.2.x   | No      | 03/11/2021   |
@@ -48,9 +49,9 @@ Syntax: fpm <command> <target>
 
 * **uninstall** - Uninstall an installed package. This removes the binary from the user packages folder.
 
-* **search** - Query a remote database for a package. By default, the `core` repo is queried. (This is interactive. Thus, the target parameter doesn't actually matter, but it still is necessary due to the way the program was written.)
+* **search** - Query a remote database for a package. By default, the `core` repo is queried.
 
-* **version** - With any argument, gets the current version of FPM running.
+* **version** - Gets the current version of FPM running.
 
 * **changelog** - With any argument, fetches the [CHANGELOG.md](CHANGELOG.md) file and prints it to the user.
 

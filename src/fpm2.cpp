@@ -117,33 +117,31 @@ int main( int argc, char *argv[] ) {
         break;
       }
       else {
-        if (dinput == 1) {
-          system(getdoc1.c_str());
-        }
-        else if (dinput == 2) {
-          system(getdoc2.c_str());
-        }
-        else if (dinput == 3) {
-          system(getdoc3.c_str());
-        }
-        else if  (dinput == 4) {
-          system(getdoc4.c_str());
-        }
-        else if (dinput == 5) {
-          system(getdoc5.c_str());
-        }
-        else if (dinput == 6) {
-          system(getdoc6.c_str());
-        }
-        else if (dinput == 7) {
-          system(getdoc7.c_str());
-        }
-        else {
-          cout << "\nfpm: invalid";
-          red();
-          cout << "\nfpm: fatal: unknown documentation.";
-          white();
-          break;
+        switch(dinput) {
+          case 1:
+            system(getdoc1.c_str());
+            break;
+          case 2:
+            system(getdoc2.c_str());
+            break;
+          case 3:
+            system(getdoc3.c_str());
+            break;
+          case 4:
+            system(getdoc4.c_str());
+            break;
+          case 5:
+            system(getdoc5.c_str());
+            break;
+          case 6:
+            system(getdoc6.c_str());
+            break;
+          case 7:
+            system(getdoc7.c_str());
+            break;
+          default:
+            cout << "\nInvalid input.";
+            break;
         }
       }
     }

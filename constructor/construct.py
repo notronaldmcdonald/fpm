@@ -16,7 +16,7 @@ ename = getpass.getuser() + "."
 
 # greeting list
 
-greetings = ["How are you today,", "What's happening,", "How\'s it hangin\',"]
+greetings = ["How are you today,", "What\'s happening,", "How\'s it hangin\',"]
 
 # begin script
 
