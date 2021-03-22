@@ -2,6 +2,11 @@
 
 ## What's new?
 
+### Version 2.1.0
+
+  * Cleaned up some code.
+  * Fixed all issues mistakenly released in 2.0.3
+
 ### Version 2.0.3
 
   * Added the help file browser.
