@@ -30,7 +30,7 @@ What versions are currently supported for fixes, and compatibility packages made
 ------------------------------------
 | Version | Support | Latest Build |
 |---------|---------|--------------|
-| 2.1.x   | Yes     | 03/19/2021   |
+| 2.1.x   | Yes     | 03/23/2021   |
 | 2.0.x   | Yes     | 03/14/2021   |
 | 1.9.14+ | No      | 03/13/2021   |
 | 1.2.x   | No      | 03/11/2021   |
@@ -58,3 +58,5 @@ Syntax: fpm <command> <target>
 * **help** - Displays FPM help with the target 'fpm', or tells the user where the helpfiles directory is.
 
 * **docs** - Starts a tool that allows you to print any documentation on the repository to your console.
+
+* **-e** - Prepend `install` or `uninstall` commands with this flag to call eggman. This requires eggman to be installed.
