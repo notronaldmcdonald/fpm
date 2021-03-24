@@ -58,3 +58,5 @@ Syntax: fpm <command> <target>
 * **help** - Displays FPM help with the target 'fpm', or tells the user where the helpfiles directory is.
 
 * **docs** - Starts a tool that allows you to print any documentation on the repository to your console.
+
+* **-e** - Prepend `install` or `uninstall` commands with this flag to call eggman. This requires eggman to be installed.

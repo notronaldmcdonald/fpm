@@ -2,6 +2,10 @@
 
 ## What's new?
 
+### Version 2.1.1
+
+  * Added integration with my mini-project, [eggman](https://github.com/notronaldmcdonald/eggman).
+
 ### Version 2.1.0
 
   * Cleaned up some code.

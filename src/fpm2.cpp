@@ -59,7 +59,7 @@ int main( int argc, char *argv[] ) {
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
     const string buildType = "rel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
-    const string build = "v2.1.0"; // build indicates the version number for the release when the code is compiled. however, i also apply it internally to track versioning.
+    const string build = "v2.1.1"; // build indicates the version number for the release when the code is compiled. however, i also apply it internally to track versioning.
   // INPUT
     string input; // general input string
     int dinput; // documentation browser's input
@@ -87,6 +87,24 @@ int main( int argc, char *argv[] ) {
 // END OF VARIABLES
 
   // commands start here
+
+  // eggman integration commands
+  if ( (argc == 4) && (string(argv[1]) == "-e") ) {
+    // execute eggman commands
+    if (string(argv[2]) == "install") {
+      cout << "\nfpm: run eggman install " << argv[3];
+      string eggcmd = string("eggman install ") + argv[3];
+      system(eggcmd.c_str());
+    }
+    else if (string(argv[2]) == "uninstall") {
+      cout << "\nfpm: run eggman remove " << argv[3];
+      string eggcmd = string("eggman remove ") + argv[3];
+      system(eggcmd.c_str());
+    }
+    else {
+      cout << "\nerror: invalid eggman command";
+    }
+  }
 
   // documentation browser
   if ( (argc == 2) && (string(argv[1]) == "docs") ) {
@@ -196,7 +214,7 @@ int main( int argc, char *argv[] ) {
   // syntax error
   if ( ( argc != 3 ) && (string(argv[1]) != "changelog") && (string(argv[1]) != "search") && (string(argv[1]) != "version") && (string(argv[1]) != "help") ) {
     red();
-    cout << "\nerror: invalid syntax. usage: " << argv[0] << " <operation> <target>";
+    cout << "\nerror: invalid syntax. usage: " << argv[0] << " [-e] <operation> <target>";
   }
   else {
     cout << "\nfpm: all good\n\n";
