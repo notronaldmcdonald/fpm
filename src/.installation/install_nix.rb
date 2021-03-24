@@ -69,3 +69,22 @@ else
   end
 end
 puts "Done."
+puts "Would you like to install eggman? (It is an optional dependency for fpm.)"
+puts "It is an AUR helper tool. Can be executed standalone or with the -e flag when running fpm."
+puts "Enter a response [yes/no]"
+eggman = gets
+eggman = eggman.chomp
+if eggman == "yes"
+  puts "Download install script."
+  system("curl https://raw.githubusercontent.com/notronaldmcdonald/eggman/stable/install.sh -o .egginstall")
+  system("bash .egginstall")
+  puts "Cleanup."
+  system("rm -f .egginstall")
+elsif eggman == "no"
+  puts "Okay! Cancelling..."
+  abort "fatal: user refused install"
+else
+  abort "fatal: invalid entry"
+end
+
+# end script
