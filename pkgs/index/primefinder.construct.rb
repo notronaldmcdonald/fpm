@@ -4,7 +4,7 @@ def install()
   base = "primefinder"
   homedir = Dir.home
   puts "install #{base}"
-  system("cp #{base} #{homedir}/.fpm/pkgs/#{base}")
+  system("cp #{home}/.fpm/install/#{base} #{homedir}/.fpm/pkgs/#{base}")
   puts "copied #{base} to package folder"
 end
 
