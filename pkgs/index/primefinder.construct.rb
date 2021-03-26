@@ -1,9 +1,8 @@
 # package build/install script
 # use as an example
-base = "primefinder"
-homedir = Dir.home
-
 def install()
+  base = "primefinder"
+  homedir = Dir.home
   puts "install #{base}"
   system("cp #{base} #{homedir}/.fpm/pkgs/#{base}")
   puts "copied #{base} to package folder"
