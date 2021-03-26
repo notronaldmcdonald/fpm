@@ -26,8 +26,6 @@ If you're a stranger who just came across this project and wants to submit somet
 
 * At the very least, your script needs an `install` function.
 
-* The `construct` tool can generate a basic install function, including dependency support.
-
 **General**
 
 * Make your pull requests against the 'live' branch.
