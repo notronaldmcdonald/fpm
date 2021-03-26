@@ -58,7 +58,7 @@ int main( int argc, char *argv[] ) {
   // INFO
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
-    const string ver [2] = {"pre", "v2.2.0.pre.1"}; // version data array
+    const string ver [2] = {"pre", "v2.2.0.pre.2"}; // version data array
   // INPUT
     int dinput; // documentation browser's input
     string inputs [5]; // inputs array (excl. dinput)
@@ -139,23 +139,23 @@ int main( int argc, char *argv[] ) {
             system(cmds[6].c_str());
             break;
           case 2:
-            system(cmds[7].c_str());
-            break;
-          case 3:
             system(cmds[8].c_str());
             break;
-          case 4:
+          case 3:
             system(cmds[9].c_str());
             break;
-          case 5:
+          case 4:
             system(cmds[10].c_str());
             break;
-          case 6:
+          case 5:
             system(cmds[11].c_str());
             break;
-          case 7:
+          case 6:
             system(cmds[12].c_str());
             break;
+          // case 7:
+          //   system(cmds[13].c_str());
+          //   break;
           default:
             cout << "\nInvalid input.";
             break;
