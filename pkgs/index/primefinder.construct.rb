@@ -8,3 +8,5 @@ def install()
   system("cp #{base} #{homedir}/.fpm/pkgs/#{base}")
   puts "copied #{base} to package folder"
 end
+
+install()

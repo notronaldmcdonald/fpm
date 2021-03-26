@@ -61,9 +61,8 @@ if target_repo == "1"
   puts "try unpack".blue
   system("tar -xzvf #{home}/.fpm/install/#{target}.tar.gz -C #{home}/.fpm/install")
   puts "If there was no errors, the package should have been unpacked.".yellow
-  puts "try transfer".blue
-  sleep(1)
-  system("cp #{home}/.fpm/install/#{target} #{home}/.fpm/pkgs/#{target}")
+  puts "run construct script".blue
+  system("ruby #{home}/.fpm/install/#{target}.construct.rb")
   puts "If all went well, your package should be installed. If you haven't already, add #{home}/.fpm/pkgs to your PATH variable.".green
 elsif target_repo == "2"
   puts "Note: packages in the 'live' repository are not subject to integrity checks.".red
@@ -73,9 +72,8 @@ elsif target_repo == "2"
   puts "try unpack".blue
   system("tar -xzvf #{home}/.fpm/install/#{target}.tar.gz #{home}/.fpm/install")
   puts "If there was no errors, the package should have been unpacked.".yellow
-  puts "try transfer".blue
-  eval(File.read("fpkgd"), binding)
-  system("cp #{home}/.fpm/install/#{target} #{home}/.fpm/pkgs/#{target}")
+  puts "run construct script".blue
+  system("ruby #{home}/.fpm/install/#{target}.construct.rb")
   puts "If all went well, your package should be installed. If you haven't already, add #{home}/.fpm/pkgs to your PATH variable.".green
 else
   puts "unknown repo. exiting."
