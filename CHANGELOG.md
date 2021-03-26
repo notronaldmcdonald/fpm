@@ -10,6 +10,7 @@
   * Fixed installation scripts
   * Fixed help function
   * Changed how integrity checks work
+  * Added Makefile for development
 
 ### Version 2.1.1
 
