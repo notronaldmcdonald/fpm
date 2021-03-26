@@ -58,7 +58,7 @@ int main( int argc, char *argv[] ) {
   // INFO
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
-    const string ver [2] = {"pre", "v2.2.0.pre.2"}; // version data array
+    const string ver [2] = {"rel", "v2.2.0"}; // version data array
   // INPUT
     int dinput; // documentation browser's input
     string inputs [5]; // inputs array (excl. dinput)
