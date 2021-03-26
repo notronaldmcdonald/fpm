@@ -2,6 +2,15 @@
 
 ## What's new?
 
+### Version 2.2.0
+
+  * Removed constructor
+  * Added support for new package format
+  * Cleaned up some code
+  * Fixed installation scripts
+  * Fixed help function
+  * Changed how integrity checks work
+
 ### Version 2.1.1
 
   * Added integration with my mini-project, [eggman](https://github.com/notronaldmcdonald/eggman).
