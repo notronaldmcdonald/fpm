@@ -18,8 +18,13 @@ If you're a stranger who just came across this project and wants to submit somet
 
 * Your package name must match the binary inside.
 
-* If you wish, include help documentation with your package. These go in /pkgs/help
+* If you wish, include help documentation with your package. These go in /pkgs/help on the remote.
   * Use the same name for the help file as your package.
+* All packages should contain a ruby script to tell fpm what to do. See pkgs/index/primefinder.construct.rb for a reference
+
+* This script should be named `<package name>.construct.rb`.
+
+* At the very least, your script needs an `install` function.
 
 **General**
 

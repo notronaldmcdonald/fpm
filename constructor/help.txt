@@ -1,6 +1,0 @@
-constructor - the Foundation Package Builder
-
-Usage: fpm -c
-
-Execute in a directory containing necessary files.
-If done properly, will automatically package the files.

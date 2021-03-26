@@ -12,12 +12,6 @@ home = Dir.home
 
 puts "Welcome to the FPM2 install script!"
 puts "This script handles the installation of the Foundation Package Manager for versions 1.9.9+"
-puts "To begin, what branch would you like to install from?"
-puts "core: stable, tested, release versions of the software."
-puts "live: whatever is currently in fpm/live. absolutely no guarantee it will work, can only install source."
-target_branch = gets
-target_branch = target_branch.chomp
-puts "Target branch set to #{target_branch}."
 puts "Checking for existing install..."
 if(File.exist?("/usr/local/bin/fpm"))
   puts "The software appears to already be installed on the system. Update? [Y/n]"
@@ -27,21 +21,14 @@ if(File.exist?("/usr/local/bin/fpm"))
     puts "User refused install."
     abort "Exit script: User aborted."
   else
-    if target_branch == "core"
-      puts "Downloading..."
-      system("curl #{core}/.bin/fpm2_nix -o fpm")
-      system("curl #{core}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
-      system("curl #{core}/src/.fpm_spine_install.rb -o /usr/local/bin/.fpm_spine_install.rb")
-      system("curl #{core}/src/.fpm_spine_uninstall.rb -o /usr/local/bin/.fpm_spine_uninstall.rb")
-      system("cp fpm /usr/local/bin/fpm")
-    else
-      puts "Downloading..."
-      system("curl #{live}/.bin/fpm2_nix -o fpm")
-      system("curl #{live}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
-      system("curl #{live}/src/.fpm_spine_install.rb -o /usr/local/bin/.fpm_spine_install.rb")
-      system("curl #{live}/src/.fpm_spine_uninstall.rb -o /usr/local/bin/.fpm_spine_uninstall.rb")
-      system("cp fpm /usr/local/bin/fpm")
-    end
+    puts "Downloading..."
+    system("curl #{core}/.bin/fpm2_nix -o fpm")
+    system("curl #{core}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
+    system("curl #{core}/src/.fpm_spine_install.rb -o /usr/local/bin/.fpm_spine_install.rb")
+    system("curl #{core}/src/.fpm_spine_uninstall.rb -o /usr/local/bin/.fpm_spine_uninstall.rb")
+    system("curl #{core}/src/.fpm_spine_help.rb -o /usr/local/bin/.fpm_spine_help.rb")
+    system("cp fpm /usr/local/bin/fpm")
+    system("rm -f fpm")
   end
 else
   puts "Download? [Y/n]"
@@ -51,21 +38,14 @@ else
     puts "User refused."
     abort "Exit script: User aborted."
   else
-    if target_branch == "core"
-      puts "Downloading..."
-      system("curl #{core}/.bin/fpm2_nix -o fpm")
-      system("curl #{core}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
-      system("curl #{core}/src/.fpm_spine_install.rb -o /usr/local/bin/.fpm_spine_install.rb")
-      system("curl #{core}/src/.fpm_spine_uninstall.rb -o /usr/local/bin/.fpm_spine_uninstall.rb")
-      system("cp fpm /usr/local/bin/fpm")
-    else
-      puts "Downloading..."
-      system("curl #{live}/.bin/fpm2_nix -o fpm")
-      system("curl #{live}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
-      system("curl #{live}/src/.fpm_spine_install.rb -o /usr/local/bin/.fpm_spine_install.rb")
-      system("curl #{live}/src/.fpm_spine_uninstall.rb -o /usr/local/bin/.fpm_spine_uninstall.rb")
-      system("cp fpm /usr/local/bin/fpm")
-    end
+    puts "Downloading..."
+    system("curl #{core}/.bin/fpm2_nix -o fpm")
+    system("curl #{core}/src/.fpm_glasses.rb -o /usr/local/bin/.fpm_glasses.rb")
+    system("curl #{core}/src/.fpm_spine_install.rb -o /usr/local/bin/.fpm_spine_install.rb")
+    system("curl #{core}/src/.fpm_spine_uninstall.rb -o /usr/local/bin/.fpm_spine_uninstall.rb")
+    system("curl #{core}/src/.fpm_spine_help.rb -o /usr/local/bin/.fpm_spine_help.rb")
+    system("cp fpm /usr/local/bin/fpm")
+    system("rm -f fpm")
   end
 end
 puts "Done."

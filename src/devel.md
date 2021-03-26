@@ -9,11 +9,11 @@ The source files are:
 
 **fpm2.cpp** - The \*NIX version of FPM. This is the core component. This is what the user interacts with directly. It is written in **C++**.
 
-**.fpm_spine_\*.rb** - The install/uninstall scripts. They are written in **Ruby**, and they require the gem 'colorize'.
+**.fpm_spine_\*.rb** - The install/uninstall/help scripts. They are written in **Ruby**, and they require the gem 'colorize'.
 
 **.fpm_glasses.rb** - The interactive search script. It is written in **Ruby**, and requires the gem 'colorize'.
 
-**.installation/fpm2_install_head.cpp** - The core install program. Allows the user to install for \*NIX operating systems, and is set up to allow for the Windows install script later down the line. It is written in **C++**.
+**.installation/fpm2_install_head.cpp** - The core install program. Allows the user to install for \*NIX operating systems. It is written in **C++**.
 
 **.installation/install_nix.rb** - Installs for \*NIX systems. Uses 'curl' to fetch the latest versions of the scripts and the latest compiled binary.
 
