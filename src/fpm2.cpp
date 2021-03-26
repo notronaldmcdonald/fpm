@@ -116,12 +116,12 @@ int main( int argc, char *argv[] ) {
       cout << "\nThis tool is intended to allow users to access the documentation from the commandline.";
       cout << "\nSelect a documentation resource from the following list:";
       cout << "\n\n1. README";
-      cout << "\n2. construct_README";
-      cout << "\n3. CHANGELOG";
-      cout << "\n4. CONTRIBUTING";
-      cout << "\n5. INSTALL";
-      cout << "\n6. LICENSE";
-      cout << "\n7. devel";
+      // cout << "\n2. construct_README";
+      cout << "\n2. CHANGELOG";
+      cout << "\n3. CONTRIBUTING";
+      cout << "\n4. INSTALL";
+      cout << "\n5. LICENSE";
+      cout << "\n6. devel";
       cout << "\n\nType the number of the documentation file you wish to download: ";
       cout << "\nPress CTRL+C to exit.\n";
       cin >> dinput;
