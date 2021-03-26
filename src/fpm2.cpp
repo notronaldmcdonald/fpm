@@ -58,32 +58,31 @@ int main( int argc, char *argv[] ) {
   // INFO
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
-    const string ver [2] = {"devel", "v2.2.0.devel.2"}; // version data array
+    const string ver [2] = {"devel", "v2.2.0.devel.3"}; // version data array
   // INPUT
-    string input; // general input string
     int dinput; // documentation browser's input
-    string confirm_dinput; // documentation browser confirm
-    string hinput; // help browser's input
-    string confirm_hinput; // help browser's confirm
     string inputs [5]; // inputs array (excl. dinput)
   // RANDOM
-    int k = 6; // used only to operate the while loop
+    bool doLoop = 1; // used only to operate the while loop
   // SYSTEM COMMANDS
-  const string install = "ruby /usr/local/bin/.fpm_spine_install.rb";
-  const string uninstall = "ruby /usr/local/bin/.fpm_spine_uninstall.rb";
-  const string search = "ruby /usr/local/bin/.fpm_glasses.rb";
-  const string getchangelog = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md -o /tmp/CHANGELOG.md";
-  const string readchangelog = "cat /tmp/CHANGELOG.md";
-  const string cleanchangelog = "rm -f /tmp/CHANGELOG.md";
-  const string getdoc1 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/README.md";
-  const string getdoc2 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/constructor/README.md";
-  const string getdoc3 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md";
-  const string getdoc4 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CONTRIBUTING.md";
-  const string getdoc5 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md";
-  const string getdoc6 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE";
-  const string getdoc7 = "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md";
-  const string helpbrowser = "ruby /usr/local/bin/.fpm_spine_help.rb";
-  const string debug = "echo \"debug message\""; // this is a developer tool used for testing purposes.
+  const string cmds[15] = {
+    "ruby /usr/local/bin/.fpm_spine_install.rb", // 0
+    "ruby /usr/local/bin/.fpm_spine_uninstall.rb", // 1
+    "ruby /usr/local/bin/.fpm_glasses.rb", // 2
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md -o /tmp/CHANGELOG.md", // 3
+    "cat /tmp/CHANGELOG.md", // 4
+    "rm -f /tmp/CHANGELOG.md", // 5
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/README.md", // 6
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/constructor/README.md", // 7
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md", // 8
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CONTRIBUTING.md", // 9
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md", // 10
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE", // 11
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md", // 12
+    "ruby /usr/local/bin/.fpm_spine_help.rb", // 13
+    "echo \"debug message\"" // 14
+    // end of array
+  };
 // END OF VARIABLES
 
   // commands start here
@@ -108,7 +107,7 @@ int main( int argc, char *argv[] ) {
 
   // documentation browser
   if ( (argc == 2) && (string(argv[1]) == "docs") ) {
-    while (k == 6) {
+    while (doLoop == 1) {
     yellow();
     cout << "\nfpm: documentation";
     white();
@@ -137,25 +136,25 @@ int main( int argc, char *argv[] ) {
       else {
         switch(dinput) {
           case 1:
-            system(getdoc1.c_str());
+            system(cmds[6].c_str());
             break;
           case 2:
-            system(getdoc2.c_str());
+            system(cmds[7].c_str());
             break;
           case 3:
-            system(getdoc3.c_str());
+            system(cmds[8].c_str());
             break;
           case 4:
-            system(getdoc4.c_str());
+            system(cmds[9].c_str());
             break;
           case 5:
-            system(getdoc5.c_str());
+            system(cmds[10].c_str());
             break;
           case 6:
-            system(getdoc6.c_str());
+            system(cmds[11].c_str());
             break;
           case 7:
-            system(getdoc7.c_str());
+            system(cmds[12].c_str());
             break;
           default:
             cout << "\nInvalid input.";
@@ -182,7 +181,7 @@ int main( int argc, char *argv[] ) {
     yellow();
     cout << "\nfpm: search";
     white();
-    system(search.c_str());
+    system(cmds[2].c_str());
   }
   // changelog command
   if ( (argc == 2) && (string(argv[1]) == "changelog") ) {
@@ -191,15 +190,15 @@ int main( int argc, char *argv[] ) {
     blue();
     cout << "\nfpm: changelog: download";
     white();
-    system(getchangelog.c_str());
+    system(cmds[3].c_str());
     yellow();
     cout << "\nfpm: changelog";
     white();
     cout << "\nfpm: changelog: read";
-    system(readchangelog.c_str());
+    system(cmds[4].c_str());
     cout << "\nfpm: changelog";
     cout << "\nfpm: cleaning up";
-    system(cleanchangelog.c_str());
+    system(cmds[5].c_str());
     green();
     cout << "\nfpm: exit";
     white();
@@ -208,7 +207,7 @@ int main( int argc, char *argv[] ) {
   else if ( (argc == 2) && (string(argv[1]) == "help") ) {
     cout << "\nfpm: help";
     cout << "\nfpm: runscript";
-    system(helpbrowser.c_str());
+    system(cmds[13].c_str());
     cout << "\nfpm: exit";
   }
   // syntax error
@@ -248,7 +247,7 @@ int main( int argc, char *argv[] ) {
     yellow();
     cout << "\nfpm: search: switch to ruby";
     white();
-    system(install.c_str());
+    system(cmds[0].c_str());
     cout << "\nfpm: search: ruby";
     cout << "\nfpm: install: done";
     green();
@@ -267,7 +266,7 @@ int main( int argc, char *argv[] ) {
     targetfile.close();
     cout << "\nfpm: run spine script";
     white();
-    system(uninstall.c_str());
+    system(cmds[1].c_str());
   }
 }
 
