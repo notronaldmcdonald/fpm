@@ -58,14 +58,14 @@ int main( int argc, char *argv[] ) {
   // INFO
     // define the code build running
     // these are mostly to allow checking if code is deemed stable or not before publishing.
-    const string buildType = "rel"; // buildType indicates whether this source code is development (devel), pre-release (pre), or stable/release code (rel).
-    const string build = "v2.1.1"; // build indicates the version number for the release when the code is compiled. however, i also apply it internally to track versioning.
+    const string ver [2] = {"devel", "v2.2.0.devel.2"}; // version data array
   // INPUT
     string input; // general input string
     int dinput; // documentation browser's input
     string confirm_dinput; // documentation browser confirm
     string hinput; // help browser's input
     string confirm_hinput; // help browser's confirm
+    string inputs [5]; // inputs array (excl. dinput)
   // RANDOM
     int k = 6; // used only to operate the while loop
   // SYSTEM COMMANDS
@@ -112,7 +112,7 @@ int main( int argc, char *argv[] ) {
     yellow();
     cout << "\nfpm: documentation";
     white();
-      cout << "\n\nThe Foundation Package Manager (build " << build << ")";
+      cout << "\n\nThe Foundation Package Manager (build " << ver[1] << ")";
       cout << "\n\nWelcome to the Foundation Package Manager documentation browser.";
       cout << "\nThis tool is intended to allow users to access the documentation from the commandline.";
       cout << "\nSelect a documentation resource from the following list:";
@@ -128,9 +128,9 @@ int main( int argc, char *argv[] ) {
       cin >> dinput;
       cout << "\nYou entered: " << dinput;
       cout << "\nIs this correct? [Y/n]\n";
-      cin >> confirm_dinput;
+      cin >> inputs[1];
       cout << "\nfpm: evaluating...";
-      if (confirm_dinput == "n") {
+      if (inputs[1] == "n") {
         cout << "\nfpm: user aborted.";
         break;
       }
@@ -170,10 +170,10 @@ int main( int argc, char *argv[] ) {
     cout << "\nfpm: version";
     white();
     cout << "\n\nfpm: the foundation package manager";
-    cout << "\nwritten in C++, with components in ruby and python.";
+    cout << "\nwritten in C++, with components in ruby and python.\n";
     blue();
-    cout << "\nbuild: " << build;
-    cout << "\nbuildType: " << buildType;
+    cout << "\nbuild: " << ver[1];
+    cout << "\nbuildType: " << ver[0] << "\n";
     white();
     cout << "\nIf the buildType string is 'devel' or 'pre', you are dealing with non-release code. (or i forgot to fix the tag before releasing)";
   }
