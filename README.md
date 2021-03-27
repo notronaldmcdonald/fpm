@@ -18,8 +18,6 @@ Not fully tested, script is typically fresh off the grill.
 
 fpm/ - the source code directory
 
-fpm/constructor/ - the details for creating a package.
-
 fpm/src - source code directory for FPM2.
 
 fpm/.bin - precompiled binary files
@@ -30,8 +28,9 @@ What versions are currently supported for fixes, and compatibility packages made
 ------------------------------------
 | Version | Support | Latest Build |
 |---------|---------|--------------|
-| 2.1.x   | Yes     | 03/23/2021   |
-| 2.0.x   | Yes     | 03/14/2021   |
+| 2.2.x   | Yes     | 03/26/2021   |
+| 2.1.x   | Partial | 03/23/2021   |
+| 2.0.x   | No      | 03/14/2021   |
 | 1.9.14+ | No      | 03/13/2021   |
 | 1.2.x   | No      | 03/11/2021   |
 | 1.1.x   | No      | 03/08/2021   |
