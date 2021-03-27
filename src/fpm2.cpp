@@ -65,22 +65,21 @@ int main( int argc, char *argv[] ) {
   // RANDOM
     bool doLoop = 1; // used only to operate the while loop
   // SYSTEM COMMANDS
-  const string cmds[15] = {
+  const string cmds[14] = {
     "ruby /usr/local/bin/.fpm_spine_install.rb", // 0
     "ruby /usr/local/bin/.fpm_spine_uninstall.rb", // 1
     "ruby /usr/local/bin/.fpm_glasses.rb", // 2
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md -o /tmp/CHANGELOG.md", // 3
-    "cat /tmp/CHANGELOG.md", // 4
-    "rm -f /tmp/CHANGELOG.md", // 5
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/README.md", // 6
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/constructor/README.md", // 7
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md", // 8
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CONTRIBUTING.md", // 9
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md", // 10
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE", // 11
-    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md", // 12
-    "ruby /usr/local/bin/.fpm_spine_help.rb", // 13
-    "echo \"debug message\"" // 14
+    "cat /tmp/CHANGELOG.md", // 3
+    "rm -f /tmp/CHANGELOG.md", // 4
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/README.md", // 5
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/constructor/README.md", // 6
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CHANGELOG.md", // 7
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/CONTRIBUTING.md", // 8
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/INSTALL.md", // 9
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/LICENSE", // 10
+    "curl https://raw.githubusercontent.com/notronaldmcdonald/fpm/core/src/devel.md", // 11
+    "ruby /usr/local/bin/.fpm_spine_help.rb", // 12
+    "echo \"debug message\"" // 13
     // end of array
   };
 // END OF VARIABLES
@@ -136,22 +135,22 @@ int main( int argc, char *argv[] ) {
       else {
         switch(dinput) {
           case 1:
-            system(cmds[6].c_str());
+            system(cmds[5].c_str());
             break;
           case 2:
-            system(cmds[8].c_str());
+            system(cmds[7].c_str());
             break;
           case 3:
-            system(cmds[9].c_str());
+            system(cmds[8].c_str());
             break;
           case 4:
-            system(cmds[10].c_str());
+            system(cmds[9].c_str());
             break;
           case 5:
-            system(cmds[11].c_str());
+            system(cmds[10].c_str());
             break;
           case 6:
-            system(cmds[12].c_str());
+            system(cmds[11].c_str());
             break;
           // case 7:
           //   system(cmds[13].c_str());
@@ -249,7 +248,7 @@ int main( int argc, char *argv[] ) {
     white();
     system(cmds[0].c_str());
     cout << "\nfpm: search: ruby";
-    cout << "\nfpm: install: done";
+    cout << "\nfpm: install: finished";
     green();
     cout << "\nfpm: exit";
     white();
@@ -267,7 +266,9 @@ int main( int argc, char *argv[] ) {
     cout << "\nfpm: run spine script";
     white();
     system(cmds[1].c_str());
+    cout << "\nfpm: done";
   }
+
 }
 
 // code ends here
